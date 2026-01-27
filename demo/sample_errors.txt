@@ -1,0 +1,11 @@
+error: 'printf' was not declared in this scope
+error: expected ';' before '}' token
+error: 'x' was not declared in this scope
+error: cannot convert 'int' to 'std::string' in assignment
+error: redefinition of 'function'
+error: undefined reference to 'function'
+error: expected unqualified-id before ')' token
+error: 'class' does not name a type
+error: invalid conversion from 'int*' to 'int'
+error: 'vector' in namespace 'std' does not name a type
+

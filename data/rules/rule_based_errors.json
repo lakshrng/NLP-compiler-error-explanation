@@ -1,0 +1,10 @@
+{
+  "not declared in this scope": "This error occurs when you use a variable, function, or identifier that hasn't been declared or is out of scope. Common causes: missing include statements, typos in variable names, or using variables before declaration.",
+  "expected ';' before": "This error indicates a missing semicolon. In C/C++, statements must end with a semicolon. Check the line before the error location.",
+  "cannot convert": "This error occurs when trying to assign or convert between incompatible types. Check the types of variables and ensure they match or can be safely converted.",
+  "redefinition of": "This error means you've declared the same identifier (variable, function, class) multiple times. Remove duplicate declarations or use different names.",
+  "undefined reference to": "This is a linker error indicating that a function or variable is declared but not defined. Ensure all functions are implemented or link the necessary object files/libraries.",
+  "does not name a type": "This error typically occurs when a type (class, struct, etc.) is used before it's defined, or when a required header file is missing.",
+  "invalid conversion from": "This error indicates an attempt to convert between incompatible pointer or value types. Check type compatibility and use appropriate casts if needed."
+}
+
