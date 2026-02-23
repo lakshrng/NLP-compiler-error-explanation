@@ -1,0 +1,1306 @@
+[
+  {
+    "input": "classify_error: C++ code:\nint main() { int* p = 100; }\nCompiler output:\nerror: cannot convert ‘int’ to ‘int*’ in initialization",
+    "target": "Semantic Error: Type Mismatch"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int* p = 100; }\nCompiler output:\nerror: cannot convert ‘int’ to ‘int*’ in initialization",
+    "target": "The compiler reports: error: cannot convert ‘int’ to ‘int*’ in initialization.\n\nCategory: Semantic Error – Type Mismatch.\n\nReason:\nA value is used where a different type is required. C++ does not allow implicit conversion between incompatible types (e.g. pointer and integer, or unrelated class types).\n\nFix:\nUse an explicit cast only when the conversion is well-defined, or change the variable or parameter type to match the value you provide."
+  },
+  {
+    "input": "classify_error: C++ code:\nvoid f(int a) {} \nint main() { f(\"hello\"); }\nCompiler output:\nerror: cannot convert ‘const char*’ to ‘int’ for argument ‘1’ to ‘void f(int)’",
+    "target": "Semantic Error: Type Mismatch"
+  },
+  {
+    "input": "explain_error: C++ code:\nvoid f(int a) {} \nint main() { f(\"hello\"); }\nCompiler output:\nerror: cannot convert ‘const char*’ to ‘int’ for argument ‘1’ to ‘void f(int)’",
+    "target": "The compiler reports: error: cannot convert ‘const char*’ to ‘int’ for argument ‘1’ to ‘void f(int)’.\n\nCategory: Semantic Error – Type Mismatch.\n\nReason:\nA value is used where a different type is required. C++ does not allow implicit conversion between incompatible types (e.g. pointer and integer, or unrelated class types).\n\nFix:\nUse an explicit cast only when the conversion is well-defined, or change the variable or parameter type to match the value you provide."
+  },
+  {
+    "input": "classify_error: C++ code:\nint x = 5; \nstd::string s = x;\nCompiler output:\nerror: conversion from ‘int’ to non-scalar type ‘std::string’ requested",
+    "target": "Semantic Error: Type Mismatch"
+  },
+  {
+    "input": "explain_error: C++ code:\nint x = 5; \nstd::string s = x;\nCompiler output:\nerror: conversion from ‘int’ to non-scalar type ‘std::string’ requested",
+    "target": "The compiler reports: error: conversion from ‘int’ to non-scalar type ‘std::string’ requested.\n\nCategory: Semantic Error – Type Mismatch.\n\nReason:\nA value is used where a different type is required. C++ does not allow implicit conversion between incompatible types (e.g. pointer and integer, or unrelated class types).\n\nFix:\nUse an explicit cast only when the conversion is well-defined, or change the variable or parameter type to match the value you provide."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { if(true) { return 0 }\nCompiler output:\nerror: expected ‘;’ before ‘}’ token",
+    "target": "Syntax Error: Missing Semicolon"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { if(true) { return 0 }\nCompiler output:\nerror: expected ‘;’ before ‘}’ token",
+    "target": "The compiler reports: error: expected ‘;’ before ‘}’ token.\n\nCategory: Syntax Error – Missing Semicolon.\n\nReason:\nA statement is missing a semicolon before a closing brace. In C++, every statement must end with a semicolon.\n\nFix:\nAdd a semicolon after the last statement inside the block (e.g. after the return or the last declaration)."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int a = (5 + 2; }\nCompiler output:\nerror: expected ‘)’ before ‘;’ token",
+    "target": "Syntax Error: Unbalanced Parentheses"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int a = (5 + 2; }\nCompiler output:\nerror: expected ‘)’ before ‘;’ token",
+    "target": "The compiler reports: error: expected ‘)’ before ‘;’ token.\n\nCategory: Syntax Error – Unbalanced Parentheses.\n\nReason:\nAn opening parenthesis is not matched by a closing one before the semicolon. The parser expects ')' before ';'.\n\nFix:\nAdd the missing closing parenthesis, or remove the extra opening parenthesis."
+  },
+  {
+    "input": "classify_error: C++ code:\nstruct Player { int health }\nCompiler output:\nerror: expected ‘;’ after struct definition",
+    "target": "Syntax Error: Missing Semicolon"
+  },
+  {
+    "input": "explain_error: C++ code:\nstruct Player { int health }\nCompiler output:\nerror: expected ‘;’ after struct definition",
+    "target": "The compiler reports: error: expected ‘;’ after struct definition.\n\nCategory: Syntax Error – Missing Semicolon.\n\nReason:\nIn C++, a struct or class definition must end with a semicolon after the closing brace.\n\nFix:\nAdd a semicolon immediately after the closing brace of the struct or class."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { count << 5; }\nCompiler output:\nerror: ‘count’ was not declared in this scope; did you mean ‘std::cout’?",
+    "target": "Semantic Error: Undeclared Identifier"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { count << 5; }\nCompiler output:\nerror: ‘count’ was not declared in this scope; did you mean ‘std::cout’?",
+    "target": "The compiler reports: error: ‘count’ was not declared in this scope; did you mean ‘std::cout’?.\n\nCategory: Semantic Error – Undeclared Identifier.\n\nReason:\nThe identifier 'count' is used but has not been declared in this scope. In C++, every identifier must be declared before use.\n\nFix:\nDeclare the variable or function before use, or fix the spelling (e.g. use the compiler-suggested alternative)."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { { int x = 10; } x = 5; }\nCompiler output:\nerror: ‘x’ was not declared in this scope",
+    "target": "Semantic Error: Out of Scope"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { { int x = 10; } x = 5; }\nCompiler output:\nerror: ‘x’ was not declared in this scope",
+    "target": "The compiler reports: error: ‘x’ was not declared in this scope.\n\nCategory: Semantic Error – Out of Scope.\n\nReason:\nThe identifier 'x' is used but has not been declared in this scope. In C++, every identifier must be declared before use.\n\nFix:\nDeclare the variable or function before use, or fix the spelling (e.g. use the compiler-suggested alternative)."
+  },
+  {
+    "input": "classify_error: C++ code:\nint x = 10; \ndouble x = 5.5;\nCompiler output:\nerror: conflicting declaration ‘double x’",
+    "target": "Semantic Error: Redeclaration of Variable"
+  },
+  {
+    "input": "explain_error: C++ code:\nint x = 10; \ndouble x = 5.5;\nCompiler output:\nerror: conflicting declaration ‘double x’",
+    "target": "The compiler reports: error: conflicting declaration ‘double x’.\n\nCategory: Semantic Error – Redeclaration of Variable.\n\nReason:\nThe same name is declared more than once with different types in the same scope. C++ does not allow two declarations of the same variable with incompatible types in one scope.\n\nFix:\nUse a single declaration with the correct type, or use a different name for one of the variables."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { const int x = 10; x = 20; }\nCompiler output:\nerror: assignment of read-only variable ‘x’",
+    "target": "Semantic Error: Const Violation"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { const int x = 10; x = 20; }\nCompiler output:\nerror: assignment of read-only variable ‘x’",
+    "target": "The compiler reports: error: assignment of read-only variable ‘x’.\n\nCategory: Semantic Error – Const Violation.\n\nReason:\nAn attempt is made to modify an object declared const or passed as a const reference. Const-qualified objects and references cannot be assigned to or modified.\n\nFix:\nRemove the modification, or change the declaration to non-const if the object is meant to be mutable."
+  },
+  {
+    "input": "classify_error: C++ code:\nvoid f(const int& n) { n++; }\nCompiler output:\nerror: increment of read-only parameter ‘n’",
+    "target": "Semantic Error: Const Violation"
+  },
+  {
+    "input": "explain_error: C++ code:\nvoid f(const int& n) { n++; }\nCompiler output:\nerror: increment of read-only parameter ‘n’",
+    "target": "The compiler reports: error: increment of read-only parameter ‘n’.\n\nCategory: Semantic Error – Const Violation.\n\nReason:\nAn attempt is made to modify an object declared const or passed as a const reference. Const-qualified objects and references cannot be assigned to or modified.\n\nFix:\nRemove the modification, or change the declaration to non-const if the object is meant to be mutable."
+  },
+  {
+    "input": "classify_error: C++ code:\nvoid print(int x); \nint main() { print(); }\nCompiler output:\nerror: too few arguments to function ‘void print(int)’",
+    "target": "Semantic Error: Argument Count Mismatch"
+  },
+  {
+    "input": "explain_error: C++ code:\nvoid print(int x); \nint main() { print(); }\nCompiler output:\nerror: too few arguments to function ‘void print(int)’",
+    "target": "The compiler reports: error: too few arguments to function ‘void print(int)’.\n\nCategory: Semantic Error – Argument Count Mismatch.\n\nReason:\nThe function is called with fewer arguments than its declaration requires. In C++, the number and types of arguments must match the declaration.\n\nFix:\nAdd the missing arguments in the call, or add default arguments to the function declaration."
+  },
+  {
+    "input": "classify_error: C++ code:\nvoid show(); \nint main() { show(10, 20); }\nCompiler output:\nerror: too many arguments to function ‘void show()’",
+    "target": "Semantic Error: Argument Count Mismatch"
+  },
+  {
+    "input": "explain_error: C++ code:\nvoid show(); \nint main() { show(10, 20); }\nCompiler output:\nerror: too many arguments to function ‘void show()’",
+    "target": "The compiler reports: error: too many arguments to function ‘void show()’.\n\nCategory: Semantic Error – Argument Count Mismatch.\n\nReason:\nThe function is called with more arguments than its declaration accepts.\n\nFix:\nRemove the extra arguments, or add corresponding parameters (with defaults if needed) to the function."
+  },
+  {
+    "input": "classify_error: C++ code:\nint sum(int a, int b) { return; }\nCompiler output:\nerror: return-statement with no value, in function returning ‘int’",
+    "target": "Semantic Error: Invalid Return Value"
+  },
+  {
+    "input": "explain_error: C++ code:\nint sum(int a, int b) { return; }\nCompiler output:\nerror: return-statement with no value, in function returning ‘int’",
+    "target": "The compiler reports: error: return-statement with no value, in function returning ‘int’.\n\nCategory: Semantic Error – Invalid Return Value.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nvoid greet() { return \"Hello\"; }\nCompiler output:\nerror: return-statement with a value, in function returning 'void'",
+    "target": "Semantic Error: Invalid Return Value"
+  },
+  {
+    "input": "explain_error: C++ code:\nvoid greet() { return \"Hello\"; }\nCompiler output:\nerror: return-statement with a value, in function returning 'void'",
+    "target": "The compiler reports: error: return-statement with a value, in function returning 'void'.\n\nCategory: Semantic Error – Invalid Return Value.\n\nReason:\nA return statement provides a value in a function declared to return void. Void functions must not return a value.\n\nFix:\nUse return; without an expression, or change the function return type if it should return a value."
+  },
+  {
+    "input": "classify_error: C++ code:\nclass A { int x; }; \nint main() { A a; a.x = 5; }\nCompiler output:\nerror: ‘int A::x’ is private within this context",
+    "target": "Semantic Error: Access Violation"
+  },
+  {
+    "input": "explain_error: C++ code:\nclass A { int x; }; \nint main() { A a; a.x = 5; }\nCompiler output:\nerror: ‘int A::x’ is private within this context",
+    "target": "The compiler reports: error: ‘int A::x’ is private within this context.\n\nCategory: Semantic Error – Access Violation.\n\nReason:\nA class member is accessed from a context where it is not accessible. Private members are only accessible within the class and friends; protected within the class, derived classes, and friends.\n\nFix:\nUse a public member or accessor, or add a friend declaration; do not bypass access rules."
+  },
+  {
+    "input": "classify_error: C++ code:\nstruct S { void f(); }; \nint main() { S s; s.g(); }\nCompiler output:\nerror: ‘struct S’ has no member named ‘g’",
+    "target": "Semantic Error: Invalid Member Access"
+  },
+  {
+    "input": "explain_error: C++ code:\nstruct S { void f(); }; \nint main() { S s; s.g(); }\nCompiler output:\nerror: ‘struct S’ has no member named ‘g’",
+    "target": "The compiler reports: error: ‘struct S’ has no member named ‘g’.\n\nCategory: Semantic Error – Invalid Member Access.\n\nReason:\nCode calls a member that does not exist for that type. The name or signature may be wrong, or the member may be in a base class and not accessible.\n\nFix:\nFix the member name, add the member to the class, or use the correct type."
+  },
+  {
+    "input": "classify_error: C++ code:\nclass Base { virtual void f() = 0; }; \nint main() { Base b; }\nCompiler output:\nerror: cannot declare variable ‘b’ to be of abstract type ‘Base’",
+    "target": "Semantic Error: Abstract Instantiation"
+  },
+  {
+    "input": "explain_error: C++ code:\nclass Base { virtual void f() = 0; }; \nint main() { Base b; }\nCompiler output:\nerror: cannot declare variable ‘b’ to be of abstract type ‘Base’",
+    "target": "The compiler reports: error: cannot declare variable ‘b’ to be of abstract type ‘Base’.\n\nCategory: Semantic Error – Abstract Instantiation.\n\nReason:\nA variable is declared with an abstract class type. Abstract classes have at least one pure virtual function and cannot be instantiated.\n\nFix:\nUse a pointer or reference to the abstract type and assign it a concrete derived object."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <nonexistent.h>\nCompiler output:\nerror: nonexistent.h: No such file or directory",
+    "target": "Preprocessor Error: Missing Header"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <nonexistent.h>\nCompiler output:\nerror: nonexistent.h: No such file or directory",
+    "target": "The compiler reports: error: nonexistent.h: No such file or directory.\n\nCategory: Preprocessor Error – Missing Header.\n\nReason:\nThe file specified in #include cannot be found. #include must refer to an existing file in the include path.\n\nFix:\nCheck the file name and path; ensure the header exists and the include path is set correctly."
+  },
+  {
+    "input": "classify_error: C++ code:\n#define X 10 20\nCompiler output:\nerror: extra tokens at end of #define directive",
+    "target": "Preprocessor Error: Invalid Macro"
+  },
+  {
+    "input": "explain_error: C++ code:\n#define X 10 20\nCompiler output:\nerror: extra tokens at end of #define directive",
+    "target": "The compiler reports: error: extra tokens at end of #define directive.\n\nCategory: Preprocessor Error – Invalid Macro.\n\nReason:\nA #define directive has extra tokens after the replacement list. Preprocessor macro definitions must end after the replacement list.\n\nFix:\nRemove the extra tokens or include them in the replacement list if intended."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { double d = 5.5; switch(d) { case 5: break; } }\nCompiler output:\nerror: switch quantity not an integer",
+    "target": "Semantic Error: Invalid Switch Type"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { double d = 5.5; switch(d) { case 5: break; } }\nCompiler output:\nerror: switch quantity not an integer",
+    "target": "The compiler reports: error: switch quantity not an integer.\n\nCategory: Semantic Error – Invalid Switch Type.\n\nReason:\nThe switch expression is not of an integer or enumeration type. In C++, the controlling expression of switch must have integral or enumeration type.\n\nFix:\nUse an integer or enum expression, or convert the value explicitly (e.g. to int) if meaningful."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { float f = 1.2; if (f == \"text\") {} }\nCompiler output:\nerror: comparison between ‘float’ and ‘const char*’",
+    "target": "Semantic Error: Type Mismatch"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { float f = 1.2; if (f == \"text\") {} }\nCompiler output:\nerror: comparison between ‘float’ and ‘const char*’",
+    "target": "The compiler reports: error: comparison between ‘float’ and ‘const char*’.\n\nCategory: Semantic Error – Type Mismatch.\n\nReason:\nTwo values of incompatible types are compared. C++ does not define comparison between certain type pairs (e.g. pointer and integer).\n\nFix:\nCompare values of the same or comparable types, or use an explicit conversion if the comparison is intended and well-defined."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { void* p; if (p > 0) {} }\nCompiler output:\nerror: ordered comparison of pointer with integer zero",
+    "target": "Semantic Error: Invalid Comparison"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { void* p; if (p > 0) {} }\nCompiler output:\nerror: ordered comparison of pointer with integer zero",
+    "target": "The compiler reports: error: ordered comparison of pointer with integer zero.\n\nCategory: Semantic Error – Invalid Comparison.\n\nReason:\nRelational comparison of pointers is only valid when both point into the same array or object.\n\nFix:\nUse == or != for equality, or ensure both pointers are in the same array before using <, >, <=, >=."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { for(int i=0; i<10) { i++; } }\nCompiler output:\nerror: expected ‘;’ before ‘)’ token",
+    "target": "Syntax Error: Incomplete For-Loop"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { for(int i=0; i<10) { i++; } }\nCompiler output:\nerror: expected ‘;’ before ‘)’ token",
+    "target": "The compiler reports: error: expected ‘;’ before ‘)’ token.\n\nCategory: Syntax Error – Incomplete For-Loop.\n\nReason:\nAn opening parenthesis is not matched by a closing one before the semicolon. The parser expects ')' before ';'.\n\nFix:\nAdd the missing closing parenthesis, or remove the extra opening parenthesis."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { do { int x = 0; } while (x < 10) }\nCompiler output:\nerror: expected ‘;’ after ‘while’ loop condition",
+    "target": "Syntax Error: Missing Semicolon"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { do { int x = 0; } while (x < 10) }\nCompiler output:\nerror: expected ‘;’ after ‘while’ loop condition",
+    "target": "The compiler reports: error: expected ‘;’ after ‘while’ loop condition.\n\nCategory: Syntax Error – Missing Semicolon.\n\nReason:\nA do-while loop requires a semicolon after the condition: do { } while (condition);\n\nFix:\nAdd a semicolon after the closing parenthesis of the while condition."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { else { int x = 5; } }\nCompiler output:\nerror: ‘else’ without a previous ‘if’",
+    "target": "Syntax Error: Orphaned Else"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { else { int x = 5; } }\nCompiler output:\nerror: ‘else’ without a previous ‘if’",
+    "target": "The compiler reports: error: ‘else’ without a previous ‘if’.\n\nCategory: Syntax Error – Orphaned Else.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { switch(5) { default: int x = 0; case 1: break; } }\nCompiler output:\nerror: jump to case label crosses initialization of ‘int x’",
+    "target": "Semantic Error: Illegal Initialization in Switch"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { switch(5) { default: int x = 0; case 1: break; } }\nCompiler output:\nerror: jump to case label crosses initialization of ‘int x’",
+    "target": "The compiler reports: error: jump to case label crosses initialization of ‘int x’.\n\nCategory: Semantic Error – Illegal Initialization in Switch.\n\nReason:\nA switch case is reached by jump and would skip the initialization of a variable. C++ does not allow jumping over a declaration with initializer into the same block.\n\nFix:\nWrap the case in a block with braces so the variable is only in scope in that case, or move the declaration above the switch."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int& ref; }\nCompiler output:\nerror: ‘ref’ declared as reference but not initialized",
+    "target": "Semantic Error: Uninitialized Reference"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int& ref; }\nCompiler output:\nerror: ‘ref’ declared as reference but not initialized",
+    "target": "The compiler reports: error: ‘ref’ declared as reference but not initialized.\n\nCategory: Semantic Error – Uninitialized Reference.\n\nReason:\nA reference is declared without being bound to an object. In C++, every reference must be initialized when it is created.\n\nFix:\nInitialize the reference with a valid object of the correct type in the same statement."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int x = 10; int& ref = 5; }\nCompiler output:\nerror: cannot bind non-const lvalue reference of type ‘int&’ to an rvalue of type ‘int’",
+    "target": "Semantic Error: Invalid Reference Binding"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int x = 10; int& ref = 5; }\nCompiler output:\nerror: cannot bind non-const lvalue reference of type ‘int&’ to an rvalue of type ‘int’",
+    "target": "The compiler reports: error: cannot bind non-const lvalue reference of type ‘int&’ to an rvalue of type ‘int’.\n\nCategory: Semantic Error – Invalid Reference Binding.\n\nReason:\nA non-const lvalue reference is being bound to a temporary or rvalue. Non-const lvalue references can only bind to modifiable lvalues.\n\nFix:\nUse const int& to bind to a temporary, or bind to a named variable (lvalue)."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int* p = new int10,; delete p; }\nCompiler output:\nwarning: ‘delete’ applied to a pointer that was allocated with ‘new,’",
+    "target": "Semantic Error: Mismatched Deallocation"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int* p = new int10,; delete p; }\nCompiler output:\nwarning: ‘delete’ applied to a pointer that was allocated with ‘new,’",
+    "target": "The compiler reports: warning: ‘delete’ applied to a pointer that was allocated with ‘new,’.\n\nCategory: Semantic Error – Mismatched Deallocation.\n\nReason:\nMemory is freed with a deallocation function that does not match how it was allocated. new must be freed with delete; new[] with delete[]; malloc with free.\n\nFix:\nUse the matching deallocation form; do not mix C and C++ allocation."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int n = 10; int arrn,; }\nCompiler output:\nerror: ISO C++ forbids variable length array ‘arr’",
+    "target": "Semantic Error: Non-Constant Array Size"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int n = 10; int arrn,; }\nCompiler output:\nerror: ISO C++ forbids variable length array ‘arr’",
+    "target": "The compiler reports: error: ISO C++ forbids variable length array ‘arr’.\n\nCategory: Semantic Error – Non-Constant Array Size.\n\nReason:\nAn array is declared with a size that is not a constant expression. In standard C++, array bounds must be compile-time constants.\n\nFix:\nUse a constant size, or use std::vector (or another container) for a runtime size."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int arr3, = {1, 2, 3, 4, 5}; }\nCompiler output:\nerror: too many initializers for ‘int 3,’",
+    "target": "Semantic Error: Excess Initializers"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int arr3, = {1, 2, 3, 4, 5}; }\nCompiler output:\nerror: too many initializers for ‘int 3,’",
+    "target": "The compiler reports: error: too many initializers for ‘int 3,’.\n\nCategory: Semantic Error – Excess Initializers.\n\nReason:\nMore initializers are provided than there are elements in the array or aggregate.\n\nFix:\nReduce the number of initializers or increase the array size."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int arr, = {}; }\nCompiler output:\nerror: zero-size array ‘arr’",
+    "target": "Semantic Error: Invalid Array Size"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int arr, = {}; }\nCompiler output:\nerror: zero-size array ‘arr’",
+    "target": "The compiler reports: error: zero-size array ‘arr’.\n\nCategory: Semantic Error – Invalid Array Size.\n\nReason:\nAn array is declared with size zero. C++ does not allow zero-length arrays.\n\nFix:\nUse a positive constant size or a different container (e.g. std::vector)."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int arr5,; arr = {1, 2, 3, 4, 5}; }\nCompiler output:\nerror: assigning to an array from an initializer list",
+    "target": "Semantic Error: Illegal Array Assignment"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int arr5,; arr = {1, 2, 3, 4, 5}; }\nCompiler output:\nerror: assigning to an array from an initializer list",
+    "target": "The compiler reports: error: assigning to an array from an initializer list.\n\nCategory: Semantic Error – Illegal Array Assignment.\n\nReason:\nAn attempt is made to assign to an array (e.g. with = { ... }). Arrays cannot be assigned to as a whole after initialization.\n\nFix:\nAssign element by element, or use std::array or std::vector which support assignment."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int x = 10; int* p = &x; double* dp = p; }\nCompiler output:\nerror: cannot convert ‘int*’ to ‘double*’ in initialization",
+    "target": "Semantic Error: Incompatible Pointer Types"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int x = 10; int* p = &x; double* dp = p; }\nCompiler output:\nerror: cannot convert ‘int*’ to ‘double*’ in initialization",
+    "target": "The compiler reports: error: cannot convert ‘int*’ to ‘double*’ in initialization.\n\nCategory: Semantic Error – Incompatible Pointer Types.\n\nReason:\nA value is used where a different type is required. C++ does not allow implicit conversion between incompatible types (e.g. pointer and integer, or unrelated class types).\n\nFix:\nUse an explicit cast only when the conversion is well-defined, or change the variable or parameter type to match the value you provide."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { void* p; *p = 10; }\nCompiler output:\nerror: ‘void*’ is not a pointer-to-object type",
+    "target": "Semantic Error: Dereferencing Void Pointer"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { void* p; *p = 10; }\nCompiler output:\nerror: ‘void*’ is not a pointer-to-object type",
+    "target": "The compiler reports: error: ‘void*’ is not a pointer-to-object type.\n\nCategory: Semantic Error – Dereferencing Void Pointer.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int x = 5; &x = 10; }\nCompiler output:\nerror: lvalue required as left operand of assignment",
+    "target": "Semantic Error: Invalid Lvalue"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int x = 5; &x = 10; }\nCompiler output:\nerror: lvalue required as left operand of assignment",
+    "target": "The compiler reports: error: lvalue required as left operand of assignment.\n\nCategory: Semantic Error – Invalid Lvalue.\n\nReason:\nThe left side of an assignment is not an lvalue (a modifiable location). Only lvalues can be assigned to.\n\nFix:\nAssign to a variable or a valid lvalue, not to a temporary or the result of an expression."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int* p = nullptr; int x = p0,; }\nCompiler output:\nwarning: dereferencing NULL pointer ‘p’",
+    "target": "Semantic Error: Null Pointer Dereference"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int* p = nullptr; int x = p0,; }\nCompiler output:\nwarning: dereferencing NULL pointer ‘p’",
+    "target": "The compiler reports: warning: dereferencing NULL pointer ‘p’.\n\nCategory: Semantic Error – Null Pointer Dereference.\n\nReason:\nA null or released pointer is dereferenced. Dereferencing a null or invalid pointer is undefined behavior.\n\nFix:\nCheck that the pointer is non-null and valid before dereferencing; do not use it after release or delete."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int* p = new void; }\nCompiler output:\nerror: cannot convert ‘void*’ to ‘int*’ in initialization",
+    "target": "Semantic Error: Type Mismatch"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int* p = new void; }\nCompiler output:\nerror: cannot convert ‘void*’ to ‘int*’ in initialization",
+    "target": "The compiler reports: error: cannot convert ‘void*’ to ‘int*’ in initialization.\n\nCategory: Semantic Error – Type Mismatch.\n\nReason:\nA value is used where a different type is required. C++ does not allow implicit conversion between incompatible types (e.g. pointer and integer, or unrelated class types).\n\nFix:\nUse an explicit cast only when the conversion is well-defined, or change the variable or parameter type to match the value you provide."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { delete 5; }\nCompiler output:\nerror: type ‘int’ argument given to ‘delete’, expected pointer",
+    "target": "Semantic Error: Invalid Delete Argument"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { delete 5; }\nCompiler output:\nerror: type ‘int’ argument given to ‘delete’, expected pointer",
+    "target": "The compiler reports: error: type ‘int’ argument given to ‘delete’, expected pointer.\n\nCategory: Semantic Error – Invalid Delete Argument.\n\nReason:\nThe operand of delete is not a pointer. Delete must be applied to a pointer previously returned by new.\n\nFix:\nPass a pointer value to delete; do not delete the same pointer twice."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int* p = new int; free(p); }\nCompiler output:\nwarning: ‘free’ called on pointer allocated with ‘new’",
+    "target": "Semantic Error: Mismatched Allocation"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int* p = new int; free(p); }\nCompiler output:\nwarning: ‘free’ called on pointer allocated with ‘new’",
+    "target": "The compiler reports: warning: ‘free’ called on pointer allocated with ‘new’.\n\nCategory: Semantic Error – Mismatched Allocation.\n\nReason:\nThe pointer passed to delete was not allocated with the corresponding new form. new pairs with delete; new[] with delete[].\n\nFix:\nUse delete for single objects and delete[] for arrays; do not delete the same pointer twice."
+  },
+  {
+    "input": "classify_error: C++ code:\nclass Box { int width; }; \nint main() { Box b; b.width = 10; }\nCompiler output:\nerror: ‘int Box::width’ is private within this context",
+    "target": "Semantic Error: Access Violation"
+  },
+  {
+    "input": "explain_error: C++ code:\nclass Box { int width; }; \nint main() { Box b; b.width = 10; }\nCompiler output:\nerror: ‘int Box::width’ is private within this context",
+    "target": "The compiler reports: error: ‘int Box::width’ is private within this context.\n\nCategory: Semantic Error – Access Violation.\n\nReason:\nA class member is accessed from a context where it is not accessible. Private members are only accessible within the class and friends; protected within the class, derived classes, and friends.\n\nFix:\nUse a public member or accessor, or add a friend declaration; do not bypass access rules."
+  },
+  {
+    "input": "classify_error: C++ code:\nclass Base { protected: int x; }; \nint main() { Base b; b.x = 5; }\nCompiler output:\nerror: ‘int Base::x’ is protected within this context",
+    "target": "Semantic Error: Access Violation"
+  },
+  {
+    "input": "explain_error: C++ code:\nclass Base { protected: int x; }; \nint main() { Base b; b.x = 5; }\nCompiler output:\nerror: ‘int Base::x’ is protected within this context",
+    "target": "The compiler reports: error: ‘int Base::x’ is protected within this context.\n\nCategory: Semantic Error – Access Violation.\n\nReason:\nA class member is accessed from a context where it is not accessible. Private members are only accessible within the class and friends; protected within the class, derived classes, and friends.\n\nFix:\nUse a public member or accessor, or add a friend declaration; do not bypass access rules."
+  },
+  {
+    "input": "classify_error: C++ code:\nclass D : private Base { public: int y; }; \nint main() { D d; d.x = 1; }\nCompiler output:\nerror: ‘int Base::x’ is inaccessible within this context",
+    "target": "Semantic Error: Inaccessible Base Member"
+  },
+  {
+    "input": "explain_error: C++ code:\nclass D : private Base { public: int y; }; \nint main() { D d; d.x = 1; }\nCompiler output:\nerror: ‘int Base::x’ is inaccessible within this context",
+    "target": "The compiler reports: error: ‘int Base::x’ is inaccessible within this context.\n\nCategory: Semantic Error – Inaccessible Base Member.\n\nReason:\nA class member is accessed from a context where it is not accessible. Private members are only accessible within the class and friends; protected within the class, derived classes, and friends.\n\nFix:\nUse a public member or accessor, or add a friend declaration; do not bypass access rules."
+  },
+  {
+    "input": "classify_error: C++ code:\nclass Data { public: Data(int x) {} }; \nint main() { Data d; }\nCompiler output:\nerror: no matching function for call to ‘Data::Data()’",
+    "target": "Semantic Error: Missing Default Constructor"
+  },
+  {
+    "input": "explain_error: C++ code:\nclass Data { public: Data(int x) {} }; \nint main() { Data d; }\nCompiler output:\nerror: no matching function for call to ‘Data::Data()’",
+    "target": "The compiler reports: error: no matching function for call to ‘Data::Data()’.\n\nCategory: Semantic Error – Missing Default Constructor.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nclass Test { const int size; public: Test() {} };\nCompiler output:\nerror: uninitialized const member in ‘class Test’",
+    "target": "Semantic Error: Uninitialized Const Member"
+  },
+  {
+    "input": "explain_error: C++ code:\nclass Test { const int size; public: Test() {} };\nCompiler output:\nerror: uninitialized const member in ‘class Test’",
+    "target": "The compiler reports: error: uninitialized const member in ‘class Test’.\n\nCategory: Semantic Error – Uninitialized Const Member.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nclass A { public: A(int x); }; \nclass B : public A { public: B() {} };\nCompiler output:\nerror: no matching function for call to ‘A::A()’",
+    "target": "Semantic Error: Base Class Constructor Mismatch"
+  },
+  {
+    "input": "explain_error: C++ code:\nclass A { public: A(int x); }; \nclass B : public A { public: B() {} };\nCompiler output:\nerror: no matching function for call to ‘A::A()’",
+    "target": "The compiler reports: error: no matching function for call to ‘A::A()’.\n\nCategory: Semantic Error – Base Class Constructor Mismatch.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nclass Shape { virtual void draw() = 0; }; \nint main() { Shape s; }\nCompiler output:\nerror: cannot declare variable ‘s’ to be of abstract type ‘Shape’",
+    "target": "Semantic Error: Abstract Class Instantiation"
+  },
+  {
+    "input": "explain_error: C++ code:\nclass Shape { virtual void draw() = 0; }; \nint main() { Shape s; }\nCompiler output:\nerror: cannot declare variable ‘s’ to be of abstract type ‘Shape’",
+    "target": "The compiler reports: error: cannot declare variable ‘s’ to be of abstract type ‘Shape’.\n\nCategory: Semantic Error – Abstract Class Instantiation.\n\nReason:\nA variable is declared with an abstract class type. Abstract classes have at least one pure virtual function and cannot be instantiated.\n\nFix:\nUse a pointer or reference to the abstract type and assign it a concrete derived object."
+  },
+  {
+    "input": "classify_error: C++ code:\nclass Base { virtual void f(); }; \nclass Derived : public Base { void f() override; void g() override; };\nCompiler output:\nerror: ‘void Derived::g()’ marked ‘override’, but does not override",
+    "target": "Semantic Error: Override Mismatch"
+  },
+  {
+    "input": "explain_error: C++ code:\nclass Base { virtual void f(); }; \nclass Derived : public Base { void f() override; void g() override; };\nCompiler output:\nerror: ‘void Derived::g()’ marked ‘override’, but does not override",
+    "target": "The compiler reports: error: ‘void Derived::g()’ marked ‘override’, but does not override.\n\nCategory: Semantic Error – Override Mismatch.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nclass Base { public: virtual ~Base() = 0; };\nint main() { Base b; }\nCompiler output:\nerror: initializer specified for non-virtual method ‘Base::~Base()’",
+    "target": "Semantic Error: Invalid Pure Virtual Destructor"
+  },
+  {
+    "input": "explain_error: C++ code:\nclass Base { public: virtual ~Base() = 0; };\nint main() { Base b; }\nCompiler output:\nerror: initializer specified for non-virtual method ‘Base::~Base()’",
+    "target": "The compiler reports: error: initializer specified for non-virtual method ‘Base::~Base()’.\n\nCategory: Semantic Error – Invalid Pure Virtual Destructor.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\ntemplate <typename T, typename U> class Pair {}; \nint main() { Pair<int> p; }\nCompiler output:\nerror: wrong number of template arguments (1, should be 2)",
+    "target": "Semantic Error: Template Argument Count Mismatch"
+  },
+  {
+    "input": "explain_error: C++ code:\ntemplate <typename T, typename U> class Pair {}; \nint main() { Pair<int> p; }\nCompiler output:\nerror: wrong number of template arguments (1, should be 2)",
+    "target": "The compiler reports: error: wrong number of template arguments (1, should be 2).\n\nCategory: Semantic Error – Template Argument Count Mismatch.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\ntemplate <int N> void f() {} \nint main() { int x = 10; f<x>(); }\nCompiler output:\nerror: the value of ‘x’ is not usable in a constant expression",
+    "target": "Semantic Error: Non-Type Template Argument Error"
+  },
+  {
+    "input": "explain_error: C++ code:\ntemplate <int N> void f() {} \nint main() { int x = 10; f<x>(); }\nCompiler output:\nerror: the value of ‘x’ is not usable in a constant expression",
+    "target": "The compiler reports: error: the value of ‘x’ is not usable in a constant expression.\n\nCategory: Semantic Error – Non-Type Template Argument Error.\n\nReason:\nA non-constant value is used where a constant expression is required. Constexpr and template arguments require compile-time constant values.\n\nFix:\nUse a literal or constexpr value, or move the computation out of the constant expression context."
+  },
+  {
+    "input": "classify_error: C++ code:\nstd::vector<int, int, int> v;\nCompiler output:\nerror: wrong number of template arguments (3, should be 1 or 2)",
+    "target": "Semantic Error: Template Argument Count Mismatch"
+  },
+  {
+    "input": "explain_error: C++ code:\nstd::vector<int, int, int> v;\nCompiler output:\nerror: wrong number of template arguments (3, should be 1 or 2)",
+    "target": "The compiler reports: error: wrong number of template arguments (3, should be 1 or 2).\n\nCategory: Semantic Error – Template Argument Count Mismatch.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\ntemplate <typename T> void sort(T start, T end) {} \nint main() { sort(1, 2.5); }\nCompiler output:\nerror: no matching function for call to ‘sort(int, double)’",
+    "target": "Semantic Error: Template Type Deduction Failure"
+  },
+  {
+    "input": "explain_error: C++ code:\ntemplate <typename T> void sort(T start, T end) {} \nint main() { sort(1, 2.5); }\nCompiler output:\nerror: no matching function for call to ‘sort(int, double)’",
+    "target": "The compiler reports: error: no matching function for call to ‘sort(int, double)’.\n\nCategory: Semantic Error – Template Type Deduction Failure.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\ntemplate <typename T> typename T::value_type get_val(T container) { return 0; } \nint main() { get_val(10); }\nCompiler output:\nerror: ‘int’ is not a class, struct, or union type",
+    "target": "Semantic Error: Invalid Dependent Type Access"
+  },
+  {
+    "input": "explain_error: C++ code:\ntemplate <typename T> typename T::value_type get_val(T container) { return 0; } \nint main() { get_val(10); }\nCompiler output:\nerror: ‘int’ is not a class, struct, or union type",
+    "target": "The compiler reports: error: ‘int’ is not a class, struct, or union type.\n\nCategory: Semantic Error – Invalid Dependent Type Access.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nstd::map<int, std::string> m; m.push_back(10);\nCompiler output:\nerror: ‘class std::map<int, std::string>’ has no member named ‘push_back’",
+    "target": "Semantic Error: Invalid STL Member Access"
+  },
+  {
+    "input": "explain_error: C++ code:\nstd::map<int, std::string> m; m.push_back(10);\nCompiler output:\nerror: ‘class std::map<int, std::string>’ has no member named ‘push_back’",
+    "target": "The compiler reports: error: ‘class std::map<int, std::string>’ has no member named ‘push_back’.\n\nCategory: Semantic Error – Invalid STL Member Access.\n\nReason:\nCode calls a member that does not exist for that type. The name or signature may be wrong, or the member may be in a base class and not accessible.\n\nFix:\nFix the member name, add the member to the class, or use the correct type."
+  },
+  {
+    "input": "classify_error: C++ code:\ntemplate <typename T> struct A { T::Internal* ptr; };\nCompiler output:\nerror: need ‘typename’ before ‘T::Internal’ because ‘T’ is a dependent scope",
+    "target": "Syntax Error: Missing Typename Keyword"
+  },
+  {
+    "input": "explain_error: C++ code:\ntemplate <typename T> struct A { T::Internal* ptr; };\nCompiler output:\nerror: need ‘typename’ before ‘T::Internal’ because ‘T’ is a dependent scope",
+    "target": "The compiler reports: error: need ‘typename’ before ‘T::Internal’ because ‘T’ is a dependent scope.\n\nCategory: Syntax Error – Missing Typename Keyword.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\ntemplate <typename T> void f() { T::template g<int>(); }\nCompiler output:\nerror: expected primary-expression before ‘int’",
+    "target": "Syntax Error: Missing Template Keyword"
+  },
+  {
+    "input": "explain_error: C++ code:\ntemplate <typename T> void f() { T::template g<int>(); }\nCompiler output:\nerror: expected primary-expression before ‘int’",
+    "target": "The compiler reports: error: expected primary-expression before ‘int’.\n\nCategory: Syntax Error – Missing Template Keyword.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int x = 0; auto f = ,() { return x; }; }\nCompiler output:\nerror: variable ‘x’ cannot be implicitly captured in a lambda with no capture-default",
+    "target": "Semantic Error: Missing Lambda Capture"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int x = 0; auto f = ,() { return x; }; }\nCompiler output:\nerror: variable ‘x’ cannot be implicitly captured in a lambda with no capture-default",
+    "target": "The compiler reports: error: variable ‘x’ cannot be implicitly captured in a lambda with no capture-default.\n\nCategory: Semantic Error – Missing Lambda Capture.\n\nReason:\nA variable used inside a lambda is not captured. Lambdas must capture (by value or reference) or have a capture-default to use outer variables.\n\nFix:\nAdd the variable to the capture list (e.g. [x] or [=])."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int x = 0; auto f = x,() { x++; }; }\nCompiler output:\nerror: increment of read-only variable ‘x’ in lambda",
+    "target": "Semantic Error: Lambda Mutation Without Mutable Keyword"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int x = 0; auto f = x,() { x++; }; }\nCompiler output:\nerror: increment of read-only variable ‘x’ in lambda",
+    "target": "The compiler reports: error: increment of read-only variable ‘x’ in lambda.\n\nCategory: Semantic Error – Lambda Mutation Without Mutable Keyword.\n\nReason:\nAn attempt is made to modify an object declared const or passed as a const reference. Const-qualified objects and references cannot be assigned to or modified.\n\nFix:\nRemove the modification, or change the declaration to non-const if the object is meant to be mutable."
+  },
+  {
+    "input": "classify_error: C++ code:\nauto f = ,(int a, int b) -> int { if(a > b) return a; else return 5.5; };\nCompiler output:\nerror: inconsistent types ‘int’ and ‘double’ deduced for lambda return type",
+    "target": "Semantic Error: Ambiguous Lambda Return Type"
+  },
+  {
+    "input": "explain_error: C++ code:\nauto f = ,(int a, int b) -> int { if(a > b) return a; else return 5.5; };\nCompiler output:\nerror: inconsistent types ‘int’ and ‘double’ deduced for lambda return type",
+    "target": "The compiler reports: error: inconsistent types ‘int’ and ‘double’ deduced for lambda return type.\n\nCategory: Semantic Error – Ambiguous Lambda Return Type.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <memory>\nint main() { std::unique_ptr<int> p1 = std::make_unique<int>(5); std::unique_ptr<int> p2 = p1; }\nCompiler output:\nerror: use of deleted function ‘std::unique_ptr<_Tp, _Dp>::unique_ptr(const std::unique_ptr<_Tp, _Dp>&)’",
+    "target": "Semantic Error: Illegal Unique Pointer Copy"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <memory>\nint main() { std::unique_ptr<int> p1 = std::make_unique<int>(5); std::unique_ptr<int> p2 = p1; }\nCompiler output:\nerror: use of deleted function ‘std::unique_ptr<_Tp, _Dp>::unique_ptr(const std::unique_ptr<_Tp, _Dp>&)’",
+    "target": "The compiler reports: error: use of deleted function ‘std::unique_ptr<_Tp, _Dp>::unique_ptr(const std::unique_ptr<_Tp, _Dp>&)’.\n\nCategory: Semantic Error – Illegal Unique Pointer Copy.\n\nReason:\nA function or constructor that was explicitly deleted (= delete) is being used. Deleted functions participate in overload resolution but may not be called.\n\nFix:\nUse a different overload or API that is not deleted, or provide the missing operation if you control the type."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <memory>\nint main() { std::shared_ptr<int> p(new int); int* raw = p.get(); delete raw; }\nCompiler output:\nwarning: ‘delete’ called on raw pointer owned by ‘shared_ptr’",
+    "target": "Semantic Error: Double Free Risk"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <memory>\nint main() { std::shared_ptr<int> p(new int); int* raw = p.get(); delete raw; }\nCompiler output:\nwarning: ‘delete’ called on raw pointer owned by ‘shared_ptr’",
+    "target": "The compiler reports: warning: ‘delete’ called on raw pointer owned by ‘shared_ptr’.\n\nCategory: Semantic Error – Double Free Risk.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { auto x; }\nCompiler output:\nerror: declaration of ‘auto x’ has no initializer",
+    "target": "Semantic Error: Uninitialized Auto Variable"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { auto x; }\nCompiler output:\nerror: declaration of ‘auto x’ has no initializer",
+    "target": "The compiler reports: error: declaration of ‘auto x’ has no initializer.\n\nCategory: Semantic Error – Uninitialized Auto Variable.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nint get_val() { return 5; }\nint main() { constexpr int x = get_val(); }\nCompiler output:\nerror: call to non-constexpr function ‘int get_val()’",
+    "target": "Semantic Error: Non-Constexpr Evaluation"
+  },
+  {
+    "input": "explain_error: C++ code:\nint get_val() { return 5; }\nint main() { constexpr int x = get_val(); }\nCompiler output:\nerror: call to non-constexpr function ‘int get_val()’",
+    "target": "The compiler reports: error: call to non-constexpr function ‘int get_val()’.\n\nCategory: Semantic Error – Non-Constexpr Evaluation.\n\nReason:\nA constexpr variable or constant expression calls a function that is not constexpr. Constexpr evaluation requires only constexpr functions and constant operands.\n\nFix:\nMake the called function constexpr if possible, or do not use it in a constexpr context."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { std::vector v = {1, 2, 3}; auto it = v.begin(); *it = \"string\"; }\nCompiler output:\nerror: cannot convert ‘const char*’ to ‘int’ in assignment",
+    "target": "Semantic Error: Type Mismatch in Deduced Iterator"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { std::vector v = {1, 2, 3}; auto it = v.begin(); *it = \"string\"; }\nCompiler output:\nerror: cannot convert ‘const char*’ to ‘int’ in assignment",
+    "target": "The compiler reports: error: cannot convert ‘const char*’ to ‘int’ in assignment.\n\nCategory: Semantic Error – Type Mismatch in Deduced Iterator.\n\nReason:\nA value is used where a different type is required. C++ does not allow implicit conversion between incompatible types (e.g. pointer and integer, or unrelated class types).\n\nFix:\nUse an explicit cast only when the conversion is well-defined, or change the variable or parameter type to match the value you provide."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <algorithm>\nstruct Point { int x, y; };\nint main() { std::vector<Point> v; std::sort(v.begin(), v.end()); }\nCompiler output:\nerror: no match for ‘operator<’ (operand types are ‘Point’ and ‘Point’)",
+    "target": "Semantic Error: Missing Comparison Operator"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <algorithm>\nstruct Point { int x, y; };\nint main() { std::vector<Point> v; std::sort(v.begin(), v.end()); }\nCompiler output:\nerror: no match for ‘operator<’ (operand types are ‘Point’ and ‘Point’)",
+    "target": "The compiler reports: error: no match for ‘operator<’ (operand types are ‘Point’ and ‘Point’).\n\nCategory: Semantic Error – Missing Comparison Operator.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <numeric>\nint main() { std::vector<std::string> v = {\"a\"}; int sum = std::accumulate(v.begin(), v.end(), 0); }\nCompiler output:\nerror: no match for ‘operator+’ (operand types are ‘int’ and ‘std::string’)",
+    "target": "Semantic Error: Accumulation Type Mismatch"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <numeric>\nint main() { std::vector<std::string> v = {\"a\"}; int sum = std::accumulate(v.begin(), v.end(), 0); }\nCompiler output:\nerror: no match for ‘operator+’ (operand types are ‘int’ and ‘std::string’)",
+    "target": "The compiler reports: error: no match for ‘operator+’ (operand types are ‘int’ and ‘std::string’).\n\nCategory: Semantic Error – Accumulation Type Mismatch.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <algorithm>\nint main() { std::list<int> l = {1, 2, 3}; std::sort(l.begin(), l.end()); }\nCompiler output:\nerror: no match for ‘operator-’ (operand types are ‘std::_List_iterator<int>’ and ‘std::_List_iterator<int>’)",
+    "target": "Semantic Error: Random Access Iterator Required"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <algorithm>\nint main() { std::list<int> l = {1, 2, 3}; std::sort(l.begin(), l.end()); }\nCompiler output:\nerror: no match for ‘operator-’ (operand types are ‘std::_List_iterator<int>’ and ‘std::_List_iterator<int>’)",
+    "target": "The compiler reports: error: no match for ‘operator-’ (operand types are ‘std::_List_iterator<int>’ and ‘std::_List_iterator<int>’).\n\nCategory: Semantic Error – Random Access Iterator Required.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <map>\nvoid f(const std::map<int, int>& m) { int x = m5,; }\nCompiler output:\nerror: passing ‘const std::map<int, int>’ as ‘this’ argument discards qualifiers (operator,)",
+    "target": "Semantic Error: Const Map Access Violation"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <map>\nvoid f(const std::map<int, int>& m) { int x = m5,; }\nCompiler output:\nerror: passing ‘const std::map<int, int>’ as ‘this’ argument discards qualifiers (operator,)",
+    "target": "The compiler reports: error: passing ‘const std::map<int, int>’ as ‘this’ argument discards qualifiers (operator,).\n\nCategory: Semantic Error – Const Map Access Violation.\n\nReason:\nA const std::map is accessed with operator[], which can insert and is non-const. operator[] cannot be used on a const map.\n\nFix:\nUse find() or at() for read-only access to a const map."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <set>\nint main() { std::set<int> s = {1, 2}; *s.begin() = 10; }\nCompiler output:\nerror: assignment of read-only location ‘* s.std::set<int>::begin()’",
+    "target": "Semantic Error: Modification of Set Element"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <set>\nint main() { std::set<int> s = {1, 2}; *s.begin() = 10; }\nCompiler output:\nerror: assignment of read-only location ‘* s.std::set<int>::begin()’",
+    "target": "The compiler reports: error: assignment of read-only location ‘* s.std::set<int>::begin()’.\n\nCategory: Semantic Error – Modification of Set Element.\n\nReason:\nAn attempt is made to modify an object declared const or passed as a const reference. Const-qualified objects and references cannot be assigned to or modified.\n\nFix:\nRemove the modification, or change the declaration to non-const if the object is meant to be mutable."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <vector>\nint main() { std::vector<int> v; v.push_back(\"string\"); }\nCompiler output:\nerror: no matching member function for call to 'push_back'",
+    "target": "Semantic Error: Container Type Mismatch"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <vector>\nint main() { std::vector<int> v; v.push_back(\"string\"); }\nCompiler output:\nerror: no matching member function for call to 'push_back'",
+    "target": "The compiler reports: error: no matching member function for call to 'push_back'.\n\nCategory: Semantic Error – Container Type Mismatch.\n\nReason:\nAn argument of the wrong type is passed to push_back. The argument type must match or be convertible to the container's element type.\n\nFix:\nPass a value of the correct type (e.g. int for vector<int>)."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <vector>\nint main() { std::vector<int> v1, v2; v1.erase(v2.begin()); }\nCompiler output:\nerror: no matching member function for call to ‘erase’ (iterator belongs to different container)",
+    "target": "Semantic Error: Foreign Iterator Usage"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <vector>\nint main() { std::vector<int> v1, v2; v1.erase(v2.begin()); }\nCompiler output:\nerror: no matching member function for call to ‘erase’ (iterator belongs to different container)",
+    "target": "The compiler reports: error: no matching member function for call to ‘erase’ (iterator belongs to different container).\n\nCategory: Semantic Error – Foreign Iterator Usage.\n\nReason:\nAn iterator from one container is used with a different container. Iterators are bound to the container that created them.\n\nFix:\nUse an iterator from the same container (e.g. v1.erase(v1.begin()) not v1.erase(v2.begin()))."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <vector>\nint main() { std::vector<int>::iterator it = 10; }\nCompiler output:\nerror: conversion from ‘int’ to non-scalar type ‘std::vector<int>::iterator’ requested",
+    "target": "Semantic Error: Invalid Iterator Initialization"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <vector>\nint main() { std::vector<int>::iterator it = 10; }\nCompiler output:\nerror: conversion from ‘int’ to non-scalar type ‘std::vector<int>::iterator’ requested",
+    "target": "The compiler reports: error: conversion from ‘int’ to non-scalar type ‘std::vector<int>::iterator’ requested.\n\nCategory: Semantic Error – Invalid Iterator Initialization.\n\nReason:\nA value is used where a different type is required. C++ does not allow implicit conversion between incompatible types (e.g. pointer and integer, or unrelated class types).\n\nFix:\nUse an explicit cast only when the conversion is well-defined, or change the variable or parameter type to match the value you provide."
+  },
+  {
+    "input": "classify_error: C++ code:\nextern int x;\nint main() { return x; }\nCompiler output:\nerror: undefined reference to ‘x’",
+    "target": "Linker Error: Undefined Reference"
+  },
+  {
+    "input": "explain_error: C++ code:\nextern int x;\nint main() { return x; }\nCompiler output:\nerror: undefined reference to ‘x’",
+    "target": "The compiler reports: error: undefined reference to ‘x’.\n\nCategory: Linker Error – Undefined Reference.\n\nReason:\nA symbol is declared (e.g. with extern) but no definition is found at link time. Every used symbol must have exactly one definition in the program (or in a linked library).\n\nFix:\nProvide a definition in this translation unit or link the object file or library that defines it."
+  },
+  {
+    "input": "classify_error: C++ code:\nstatic void f();\nint main() { f(); }\nCompiler output:\nerror: ‘void f()’ used but never defined",
+    "target": "Linker Error: Missing Definition"
+  },
+  {
+    "input": "explain_error: C++ code:\nstatic void f();\nint main() { f(); }\nCompiler output:\nerror: ‘void f()’ used but never defined",
+    "target": "The compiler reports: error: ‘void f()’ used but never defined.\n\nCategory: Linker Error – Missing Definition.\n\nReason:\nA function is declared but never defined in the program. The linker needs one definition for each used function.\n\nFix:\nAdd a definition for the function, or remove the call if it is not needed."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { static int x; extern int x; }\nCompiler output:\nerror: ‘x’ has both ‘static’ and ‘extern’ linkage",
+    "target": "Semantic Error: Conflicting Linkage Specifiers"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { static int x; extern int x; }\nCompiler output:\nerror: ‘x’ has both ‘static’ and ‘extern’ linkage",
+    "target": "The compiler reports: error: ‘x’ has both ‘static’ and ‘extern’ linkage.\n\nCategory: Semantic Error – Conflicting Linkage Specifiers.\n\nReason:\nA variable cannot simultaneously have internal linkage (static) and external linkage (extern). These specifiers contradict each other in the C++ standard.\n\nFix:\nRemove either the static or extern keyword so the variable has only one linkage specification."
+  },
+  {
+    "input": "classify_error: C++ code:\ninline void f() { static int x = 0; }\n// In multiple files\nCompiler output:\nerror: redefinition of ‘void f()’",
+    "target": "Semantic Error: One Definition Rule Violation"
+  },
+  {
+    "input": "explain_error: C++ code:\ninline void f() { static int x = 0; }\n// In multiple files\nCompiler output:\nerror: redefinition of ‘void f()’",
+    "target": "The compiler reports: error: redefinition of ‘void f()’.\n\nCategory: Semantic Error – One Definition Rule Violation.\n\nReason:\nA function or variable is defined more than once in a way that violates the One Definition Rule. In C++, each function and non-inline variable must have exactly one definition (within the same linkage).\n\nFix:\nKeep a single definition, or make the function inline or define it in a header with proper include guards."
+  },
+  {
+    "input": "classify_error: C++ code:\n#if defined(X)\nint x = 10;\n#endif // missing closing brace logic in some contexts\nCompiler output:\nerror: #endif without #if",
+    "target": "Preprocessor Error: Unbalanced Directive"
+  },
+  {
+    "input": "explain_error: C++ code:\n#if defined(X)\nint x = 10;\n#endif // missing closing brace logic in some contexts\nCompiler output:\nerror: #endif without #if",
+    "target": "The compiler reports: error: #endif without #if.\n\nCategory: Preprocessor Error – Unbalanced Directive.\n\nReason:\nAn #endif appears without a matching #if, #ifdef, or #ifndef. Preprocessor conditionals must be properly nested and matched.\n\nFix:\nEnsure every #endif has a matching #if/#ifdef/#ifndef and that they are correctly nested."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <iostream\nint main() {}\nCompiler output:\nerror: missing terminating > character",
+    "target": "Preprocessor Error: Incomplete Include"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <iostream\nint main() {}\nCompiler output:\nerror: missing terminating > character",
+    "target": "The compiler reports: error: missing terminating > character.\n\nCategory: Preprocessor Error – Incomplete Include.\n\nReason:\nThe #include directive is missing the closing angle bracket. Standard headers use #include <filename>.\n\nFix:\nAdd the closing '>' to the #include line."
+  },
+  {
+    "input": "classify_error: C++ code:\n#define MAX(a,b) (a > b ? a : b\nint main() { int x = MAX(5,6); }\nCompiler output:\nerror: expected ‘)’ at end of input",
+    "target": "Preprocessor Error: Macro Expansion Error"
+  },
+  {
+    "input": "explain_error: C++ code:\n#define MAX(a,b) (a > b ? a : b\nint main() { int x = MAX(5,6); }\nCompiler output:\nerror: expected ‘)’ at end of input",
+    "target": "The compiler reports: error: expected ‘)’ at end of input.\n\nCategory: Preprocessor Error – Macro Expansion Error.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nclass A { static int x = 10; };\nCompiler output:\nerror: ISO C++ forbids in-class initialization of non-const static member ‘A::x’",
+    "target": "Semantic Error: Invalid Static Member Initialization"
+  },
+  {
+    "input": "explain_error: C++ code:\nclass A { static int x = 10; };\nCompiler output:\nerror: ISO C++ forbids in-class initialization of non-const static member ‘A::x’",
+    "target": "The compiler reports: error: ISO C++ forbids in-class initialization of non-const static member ‘A::x’.\n\nCategory: Semantic Error – Invalid Static Member Initialization.\n\nReason:\nA non-const static data member is initialized inside the class definition. In C++ (before C++17), only const integral static members can be initialized in-class.\n\nFix:\nDefine and initialize the static member outside the class in one translation unit, or use inline (C++17)."
+  },
+  {
+    "input": "classify_error: C++ code:\nvoid f() { extern int x = 10; }\nCompiler output:\nerror: ‘x’ has both ‘extern’ and initializer",
+    "target": "Semantic Error: Extern Variable Initialization"
+  },
+  {
+    "input": "explain_error: C++ code:\nvoid f() { extern int x = 10; }\nCompiler output:\nerror: ‘x’ has both ‘extern’ and initializer",
+    "target": "The compiler reports: error: ‘x’ has both ‘extern’ and initializer.\n\nCategory: Semantic Error – Extern Variable Initialization.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { thread_local int x = 0; }\n// In a context where threads aren't supported or syntax is wrong\nCompiler output:\nerror: ‘thread_local’ specifier not allowed here",
+    "target": "Semantic Error: Invalid Storage Class Specifier"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { thread_local int x = 0; }\n// In a context where threads aren't supported or syntax is wrong\nCompiler output:\nerror: ‘thread_local’ specifier not allowed here",
+    "target": "The compiler reports: error: ‘thread_local’ specifier not allowed here.\n\nCategory: Semantic Error – Invalid Storage Class Specifier.\n\nReason:\nthread_local is used in a context where it is not allowed. thread_local can only be used for namespace-scope or block-scope variables.\n\nFix:\nMove the declaration to an allowed scope or remove thread_local if not needed."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { const int x = 10; int* p = static_cast<int*>(&x); }\nCompiler output:\nerror: static_cast from type ‘const int*’ to type ‘int*’ casts away qualifiers",
+    "target": "Semantic Error: Invalid Static Cast"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { const int x = 10; int* p = static_cast<int*>(&x); }\nCompiler output:\nerror: static_cast from type ‘const int*’ to type ‘int*’ casts away qualifiers",
+    "target": "The compiler reports: error: static_cast from type ‘const int*’ to type ‘int*’ casts away qualifiers.\n\nCategory: Semantic Error – Invalid Static Cast.\n\nReason:\nA static_cast attempts to remove const or other qualifiers from a pointer or reference. C++ does not allow casting away const with static_cast.\n\nFix:\nDo not remove const; use a type that accepts const, or redesign if you need mutable access."
+  },
+  {
+    "input": "classify_error: C++ code:\nstruct A {}; struct B {}; \nint main() { A* a = new A; B* b = static_cast<B*>(a); }\nCompiler output:\nerror: invalid static_cast from type ‘A*’ to type ‘B*’",
+    "target": "Semantic Error: Incompatible Type Cast"
+  },
+  {
+    "input": "explain_error: C++ code:\nstruct A {}; struct B {}; \nint main() { A* a = new A; B* b = static_cast<B*>(a); }\nCompiler output:\nerror: invalid static_cast from type ‘A*’ to type ‘B*’",
+    "target": "The compiler reports: error: invalid static_cast from type ‘A*’ to type ‘B*’.\n\nCategory: Semantic Error – Incompatible Type Cast.\n\nReason:\nA static_cast is used between unrelated types (e.g. two unrelated class pointers). static_cast allows safe conversions (e.g. numeric, up/down in hierarchy when well-defined).\n\nFix:\nUse the correct cast (e.g. dynamic_cast for polymorphic types) or fix the type design."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { double d = 5.5; int* p = reinterpret_cast<int*>(d); }\nCompiler output:\nerror: reinterpret_cast from type ‘double’ to type ‘int*’ is not allowed",
+    "target": "Semantic Error: Invalid Reinterpret Cast"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { double d = 5.5; int* p = reinterpret_cast<int*>(d); }\nCompiler output:\nerror: reinterpret_cast from type ‘double’ to type ‘int*’ is not allowed",
+    "target": "The compiler reports: error: reinterpret_cast from type ‘double’ to type ‘int*’ is not allowed.\n\nCategory: Semantic Error – Invalid Reinterpret Cast.\n\nReason:\nA reinterpret_cast is used in a way the language does not allow. Not all type pairs can be reinterpret_cast; the standard restricts valid conversions.\n\nFix:\nUse a different cast or representation that is allowed."
+  },
+  {
+    "input": "classify_error: C++ code:\nclass Base { void f(); }; class Derived : public Base {}; \nint main() { Base* b = new Base; Derived* d = dynamic_cast<Derived*>(b); }\nCompiler output:\nerror: cannot dynamic_cast ‘b’ (of type ‘class Base*’) to type ‘class Derived*’ (source type is not polymorphic)",
+    "target": "Semantic Error: Non-Polymorphic Dynamic Cast"
+  },
+  {
+    "input": "explain_error: C++ code:\nclass Base { void f(); }; class Derived : public Base {}; \nint main() { Base* b = new Base; Derived* d = dynamic_cast<Derived*>(b); }\nCompiler output:\nerror: cannot dynamic_cast ‘b’ (of type ‘class Base*’) to type ‘class Derived*’ (source type is not polymorphic)",
+    "target": "The compiler reports: error: cannot dynamic_cast ‘b’ (of type ‘class Base*’) to type ‘class Derived*’ (source type is not polymorphic).\n\nCategory: Semantic Error – Non-Polymorphic Dynamic Cast.\n\nReason:\ndynamic_cast is used on a pointer or reference to a non-polymorphic type. dynamic_cast requires the source type to have at least one virtual function.\n\nFix:\nMake the base class polymorphic (add a virtual function) or use static_cast if the relationship is known."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <typeinfo>\nint main() { int x; typeid(x) = typeid(int); }\nCompiler output:\nerror: lvalue required as left operand of assignment",
+    "target": "Semantic Error: Typeid Assignment Violation"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <typeinfo>\nint main() { int x; typeid(x) = typeid(int); }\nCompiler output:\nerror: lvalue required as left operand of assignment",
+    "target": "The compiler reports: error: lvalue required as left operand of assignment.\n\nCategory: Semantic Error – Typeid Assignment Violation.\n\nReason:\nThe left side of an assignment is not an lvalue (a modifiable location). Only lvalues can be assigned to.\n\nFix:\nAssign to a variable or a valid lvalue, not to a temporary or the result of an expression."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { char* s = 0; int x = s; }\nCompiler output:\nerror: invalid conversion from ‘char*’ to ‘int’",
+    "target": "Semantic Error: Type Mismatch"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { char* s = 0; int x = s; }\nCompiler output:\nerror: invalid conversion from ‘char*’ to ‘int’",
+    "target": "The compiler reports: error: invalid conversion from ‘char*’ to ‘int’.\n\nCategory: Semantic Error – Type Mismatch.\n\nReason:\nA value is used where a different type is required. C++ does not allow implicit conversion between incompatible types (e.g. pointer and integer, or unrelated class types).\n\nFix:\nUse an explicit cast only when the conversion is well-defined, or change the variable or parameter type to match the value you provide."
+  },
+  {
+    "input": "classify_error: C++ code:\nvoid f(int* p); \nint main() { const int x = 5; f(&x); }\nCompiler output:\nerror: invalid conversion from ‘const int*’ to ‘int*’",
+    "target": "Semantic Error: Argument Qualifier Mismatch"
+  },
+  {
+    "input": "explain_error: C++ code:\nvoid f(int* p); \nint main() { const int x = 5; f(&x); }\nCompiler output:\nerror: invalid conversion from ‘const int*’ to ‘int*’",
+    "target": "The compiler reports: error: invalid conversion from ‘const int*’ to ‘int*’.\n\nCategory: Semantic Error – Argument Qualifier Mismatch.\n\nReason:\nA value is used where a different type is required. C++ does not allow implicit conversion between incompatible types (e.g. pointer and integer, or unrelated class types).\n\nFix:\nUse an explicit cast only when the conversion is well-defined, or change the variable or parameter type to match the value you provide."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int x{5.5}; }\nCompiler output:\nerror: narrowing conversion of ‘5.5e+0’ from ‘double’ to ‘int’ inside { }",
+    "target": "Semantic Error: Narrowing Conversion"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int x{5.5}; }\nCompiler output:\nerror: narrowing conversion of ‘5.5e+0’ from ‘double’ to ‘int’ inside { }",
+    "target": "The compiler reports: error: narrowing conversion of ‘5.5e+0’ from ‘double’ to ‘int’ inside { }.\n\nCategory: Semantic Error – Narrowing Conversion.\n\nReason:\nBrace-initialization in C++ disallows implicit narrowing from a larger or floating-point type to a smaller or integer type.\n\nFix:\nUse an explicit cast if loss of precision is intended, or initialize with a value that fits the target type."
+  },
+  {
+    "input": "classify_error: C++ code:\nenum class Color { Red, Blue };\nint main() { int x = Color::Red; }\nCompiler output:\nerror: cannot convert ‘Color’ to ‘int’ in initialization",
+    "target": "Semantic Error: Invalid Enum Conversion"
+  },
+  {
+    "input": "explain_error: C++ code:\nenum class Color { Red, Blue };\nint main() { int x = Color::Red; }\nCompiler output:\nerror: cannot convert ‘Color’ to ‘int’ in initialization",
+    "target": "The compiler reports: error: cannot convert ‘Color’ to ‘int’ in initialization.\n\nCategory: Semantic Error – Invalid Enum Conversion.\n\nReason:\nA value is used where a different type is required. C++ does not allow implicit conversion between incompatible types (e.g. pointer and integer, or unrelated class types).\n\nFix:\nUse an explicit cast only when the conversion is well-defined, or change the variable or parameter type to match the value you provide."
+  },
+  {
+    "input": "classify_error: C++ code:\nenum class Status { OK, Error };\nint main() { if (Status::OK == 0) {} }\nCompiler output:\nerror: no match for ‘operator==’ (operand types are ‘Status’ and ‘int’)",
+    "target": "Semantic Error: Invalid Enum Comparison"
+  },
+  {
+    "input": "explain_error: C++ code:\nenum class Status { OK, Error };\nint main() { if (Status::OK == 0) {} }\nCompiler output:\nerror: no match for ‘operator==’ (operand types are ‘Status’ and ‘int’)",
+    "target": "The compiler reports: error: no match for ‘operator==’ (operand types are ‘Status’ and ‘int’).\n\nCategory: Semantic Error – Invalid Enum Comparison.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nenum class Traffic { Green };\nint main() { Traffic t = Green; }\nCompiler output:\nerror: ‘Green’ was not declared in this scope; did you mean ‘Traffic::Green’?",
+    "target": "Semantic Error: Unqualified Enum Access"
+  },
+  {
+    "input": "explain_error: C++ code:\nenum class Traffic { Green };\nint main() { Traffic t = Green; }\nCompiler output:\nerror: ‘Green’ was not declared in this scope; did you mean ‘Traffic::Green’?",
+    "target": "The compiler reports: error: ‘Green’ was not declared in this scope; did you mean ‘Traffic::Green’?.\n\nCategory: Semantic Error – Unqualified Enum Access.\n\nReason:\nThe identifier 'Green' is used but has not been declared in this scope. In C++, every identifier must be declared before use.\n\nFix:\nDeclare the variable or function before use, or fix the spelling (e.g. use the compiler-suggested alternative)."
+  },
+  {
+    "input": "classify_error: C++ code:\nnamespace A { void f(); } namespace B { void f(); }\nusing namespace A; using namespace B;\nint main() { f(); }\nCompiler output:\nerror: call of overloaded ‘f()’ is ambiguous",
+    "target": "Semantic Error: Namespace Ambiguity"
+  },
+  {
+    "input": "explain_error: C++ code:\nnamespace A { void f(); } namespace B { void f(); }\nusing namespace A; using namespace B;\nint main() { f(); }\nCompiler output:\nerror: call of overloaded ‘f()’ is ambiguous",
+    "target": "The compiler reports: error: call of overloaded ‘f()’ is ambiguous.\n\nCategory: Semantic Error – Namespace Ambiguity.\n\nReason:\nMore than one overloaded function matches the call, and neither is a better match. The compiler cannot choose (e.g. int vs double for a float argument).\n\nFix:\nAdd an explicit cast to the desired parameter type, or add or remove an overload to resolve the ambiguity."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <vector>\nnamespace my_std { template<typename T> class vector {}; }\nusing namespace std; using namespace my_std;\nint main() { vector<int> v; }\nCompiler output:\nerror: reference to ‘vector’ is ambiguous",
+    "target": "Semantic Error: Conflicting Symbol Names"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <vector>\nnamespace my_std { template<typename T> class vector {}; }\nusing namespace std; using namespace my_std;\nint main() { vector<int> v; }\nCompiler output:\nerror: reference to ‘vector’ is ambiguous",
+    "target": "The compiler reports: error: reference to ‘vector’ is ambiguous.\n\nCategory: Semantic Error – Conflicting Symbol Names.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nnamespace Net { namespace Http { class Client {}; } }\nint main() { Http::Client c; }\nCompiler output:\nerror: ‘Http’ has not been declared",
+    "target": "Semantic Error: Nested Namespace Access Error"
+  },
+  {
+    "input": "explain_error: C++ code:\nnamespace Net { namespace Http { class Client {}; } }\nint main() { Http::Client c; }\nCompiler output:\nerror: ‘Http’ has not been declared",
+    "target": "The compiler reports: error: ‘Http’ has not been declared.\n\nCategory: Semantic Error – Nested Namespace Access Error.\n\nReason:\nThe name is used in a context where it has not been declared. C++ requires a declaration (or include that provides it) before use.\n\nFix:\nAdd the appropriate declaration or #include, or fix the scope or spelling of the name."
+  },
+  {
+    "input": "classify_error: C++ code:\nnamespace Project = LongProjectName::SubSection::Module;\n// if LongProjectName is not defined\nCompiler output:\nerror: ‘LongProjectName’ has not been declared",
+    "target": "Syntax Error: Invalid Namespace Alias"
+  },
+  {
+    "input": "explain_error: C++ code:\nnamespace Project = LongProjectName::SubSection::Module;\n// if LongProjectName is not defined\nCompiler output:\nerror: ‘LongProjectName’ has not been declared",
+    "target": "The compiler reports: error: ‘LongProjectName’ has not been declared.\n\nCategory: Syntax Error – Invalid Namespace Alias.\n\nReason:\nThe name is used in a context where it has not been declared. C++ requires a declaration (or include that provides it) before use.\n\nFix:\nAdd the appropriate declaration or #include, or fix the scope or spelling of the name."
+  },
+  {
+    "input": "classify_error: C++ code:\nnamespace { int x; } \nnamespace { int x; }\nCompiler output:\nerror: redefinition of ‘int {anonymous}::x’",
+    "target": "Semantic Error: Anonymous Namespace Conflict"
+  },
+  {
+    "input": "explain_error: C++ code:\nnamespace { int x; } \nnamespace { int x; }\nCompiler output:\nerror: redefinition of ‘int {anonymous}::x’",
+    "target": "The compiler reports: error: redefinition of ‘int {anonymous}::x’.\n\nCategory: Semantic Error – Anonymous Namespace Conflict.\n\nReason:\nA function or variable is defined more than once in a way that violates the One Definition Rule. In C++, each function and non-inline variable must have exactly one definition (within the same linkage).\n\nFix:\nKeep a single definition, or make the function inline or define it in a header with proper include guards."
+  },
+  {
+    "input": "classify_error: C++ code:\ninline namespace V1 { void f(); }\nvoid f();\nCompiler output:\nerror: redefinition of ‘void f()’",
+    "target": "Semantic Error: Inline Namespace Redefinition"
+  },
+  {
+    "input": "explain_error: C++ code:\ninline namespace V1 { void f(); }\nvoid f();\nCompiler output:\nerror: redefinition of ‘void f()’",
+    "target": "The compiler reports: error: redefinition of ‘void f()’.\n\nCategory: Semantic Error – Inline Namespace Redefinition.\n\nReason:\nA function or variable is defined more than once in a way that violates the One Definition Rule. In C++, each function and non-inline variable must have exactly one definition (within the same linkage).\n\nFix:\nKeep a single definition, or make the function inline or define it in a header with proper include guards."
+  },
+  {
+    "input": "classify_error: C++ code:\nstruct Base {}; struct Derived : private Base {}; \nint main() { try { throw Derived(); } catch (Base& b) {} }\nCompiler output:\nerror: ‘Base’ is an inaccessible base of ‘Derived’",
+    "target": "Semantic Error: Inaccessible Exception Base"
+  },
+  {
+    "input": "explain_error: C++ code:\nstruct Base {}; struct Derived : private Base {}; \nint main() { try { throw Derived(); } catch (Base& b) {} }\nCompiler output:\nerror: ‘Base’ is an inaccessible base of ‘Derived’",
+    "target": "The compiler reports: error: ‘Base’ is an inaccessible base of ‘Derived’.\n\nCategory: Semantic Error – Inaccessible Exception Base.\n\nReason:\nA class member is accessed from a context where it is not accessible. Private members are only accessible within the class and friends; protected within the class, derived classes, and friends.\n\nFix:\nUse a public member or accessor, or add a friend declaration; do not bypass access rules."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { try {} catch (int x) {} catch (int y) {} }\nCompiler output:\nerror: multiple handlers for type ‘int’",
+    "target": "Semantic Error: Duplicate Exception Handler"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { try {} catch (int x) {} catch (int y) {} }\nCompiler output:\nerror: multiple handlers for type ‘int’",
+    "target": "The compiler reports: error: multiple handlers for type ‘int’.\n\nCategory: Semantic Error – Duplicate Exception Handler.\n\nReason:\nTwo or more catch blocks handle the same type. Each catch type in a try block must be distinct.\n\nFix:\nRemove or merge the duplicate catch blocks."
+  },
+  {
+    "input": "classify_error: C++ code:\nclass Abstract { virtual void f() = 0; };\nint main() { try {} catch (Abstract a) {} }\nCompiler output:\nerror: cannot declare catch parameter to be of abstract type ‘Abstract’",
+    "target": "Semantic Error: Catching Abstract Type by Value"
+  },
+  {
+    "input": "explain_error: C++ code:\nclass Abstract { virtual void f() = 0; };\nint main() { try {} catch (Abstract a) {} }\nCompiler output:\nerror: cannot declare catch parameter to be of abstract type ‘Abstract’",
+    "target": "The compiler reports: error: cannot declare catch parameter to be of abstract type ‘Abstract’.\n\nCategory: Semantic Error – Catching Abstract Type by Value.\n\nReason:\nA catch clause declares its parameter as an abstract class type by value. Abstract types cannot be copied or instantiated.\n\nFix:\nCatch by reference (e.g. catch (Abstract& e)) instead of by value."
+  },
+  {
+    "input": "classify_error: C++ code:\nvoid f() throw(int); \n// In C++17 or later\nCompiler output:\nerror: ISO C++17 does not allow dynamic exception specifications",
+    "target": "Semantic Error: Deprecated Exception Specification"
+  },
+  {
+    "input": "explain_error: C++ code:\nvoid f() throw(int); \n// In C++17 or later\nCompiler output:\nerror: ISO C++17 does not allow dynamic exception specifications",
+    "target": "The compiler reports: error: ISO C++17 does not allow dynamic exception specifications.\n\nCategory: Semantic Error – Deprecated Exception Specification.\n\nReason:\nA function is declared with a dynamic exception specification (e.g. throw(int)). Dynamic exception specifications are removed in C++17.\n\nFix:\nRemove the throw(...) part from the function declaration; use noexcept where appropriate."
+  },
+  {
+    "input": "classify_error: C++ code:\nstruct NonCopyable { NonCopyable() = default; NonCopyable(const NonCopyable&) = delete; };\nint main() { throw NonCopyable(); }\nCompiler output:\nerror: use of deleted function ‘NonCopyable::NonCopyable(const NonCopyable&)’",
+    "target": "Semantic Error: Throwing Non-Copyable Object"
+  },
+  {
+    "input": "explain_error: C++ code:\nstruct NonCopyable { NonCopyable() = default; NonCopyable(const NonCopyable&) = delete; };\nint main() { throw NonCopyable(); }\nCompiler output:\nerror: use of deleted function ‘NonCopyable::NonCopyable(const NonCopyable&)’",
+    "target": "The compiler reports: error: use of deleted function ‘NonCopyable::NonCopyable(const NonCopyable&)’.\n\nCategory: Semantic Error – Throwing Non-Copyable Object.\n\nReason:\nAn object that is thrown must be copied or moved; the type has a deleted copy constructor. Throwing by value requires the type to be copyable or movable.\n\nFix:\nMake the type copyable or movable, or throw a pointer or a type that can be copied."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { throw; }\nCompiler output:\nerror: ‘throw’ expression with no operand outside of a catch handler",
+    "target": "Semantic Error: Invalid Exception Rethrow"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { throw; }\nCompiler output:\nerror: ‘throw’ expression with no operand outside of a catch handler",
+    "target": "The compiler reports: error: ‘throw’ expression with no operand outside of a catch handler.\n\nCategory: Semantic Error – Invalid Exception Rethrow.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { try { int x = 0; } catch (...) ; }\nCompiler output:\nerror: expected ‘{’ before ‘;’ token",
+    "target": "Syntax Error: Missing Catch Block Body"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { try { int x = 0; } catch (...) ; }\nCompiler output:\nerror: expected ‘{’ before ‘;’ token",
+    "target": "The compiler reports: error: expected ‘{’ before ‘;’ token.\n\nCategory: Syntax Error – Missing Catch Block Body.\n\nReason:\nThe parser expected a semicolon at this location. In C++, statements and declarations end with a semicolon.\n\nFix:\nAdd the missing semicolon at the position indicated by the compiler."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { catch(int e) { } }\nCompiler output:\nerror: expected primary-expression before ‘catch’",
+    "target": "Syntax Error: Catch Without Try"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { catch(int e) { } }\nCompiler output:\nerror: expected primary-expression before ‘catch’",
+    "target": "The compiler reports: error: expected primary-expression before ‘catch’.\n\nCategory: Syntax Error – Catch Without Try.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nvoid func() noexcept { throw 5; }\nCompiler output:\nwarning: ‘throw’ will always call ‘terminate’ -Wterminate,",
+    "target": "Semantic Error: Throw in Noexcept Function"
+  },
+  {
+    "input": "explain_error: C++ code:\nvoid func() noexcept { throw 5; }\nCompiler output:\nwarning: ‘throw’ will always call ‘terminate’ -Wterminate,",
+    "target": "The compiler reports: warning: ‘throw’ will always call ‘terminate’ -Wterminate,.\n\nCategory: Semantic Error – Throw in Noexcept Function.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nvoid f(int x) {} \nvoid f(double x) {} \nint main() { f(5.0f); }\nCompiler output:\nerror: call of overloaded ‘f(float)’ is ambiguous",
+    "target": "Semantic Error: Ambiguous Function Call"
+  },
+  {
+    "input": "explain_error: C++ code:\nvoid f(int x) {} \nvoid f(double x) {} \nint main() { f(5.0f); }\nCompiler output:\nerror: call of overloaded ‘f(float)’ is ambiguous",
+    "target": "The compiler reports: error: call of overloaded ‘f(float)’ is ambiguous.\n\nCategory: Semantic Error – Ambiguous Function Call.\n\nReason:\nMore than one overloaded function matches the call, and neither is a better match. The compiler cannot choose (e.g. int vs double for a float argument).\n\nFix:\nAdd an explicit cast to the desired parameter type, or add or remove an overload to resolve the ambiguity."
+  },
+  {
+    "input": "classify_error: C++ code:\nvoid print(long x) {} \nvoid print(char x) {} \nint main() { print(5); }\nCompiler output:\nerror: call of overloaded ‘print(int)’ is ambiguous",
+    "target": "Semantic Error: Ambiguous Function Call"
+  },
+  {
+    "input": "explain_error: C++ code:\nvoid print(long x) {} \nvoid print(char x) {} \nint main() { print(5); }\nCompiler output:\nerror: call of overloaded ‘print(int)’ is ambiguous",
+    "target": "The compiler reports: error: call of overloaded ‘print(int)’ is ambiguous.\n\nCategory: Semantic Error – Ambiguous Function Call.\n\nReason:\nMore than one overloaded function matches the call, and neither is a better match. The compiler cannot choose (e.g. int vs double for a float argument).\n\nFix:\nAdd an explicit cast to the desired parameter type, or add or remove an overload to resolve the ambiguity."
+  },
+  {
+    "input": "classify_error: C++ code:\nstruct A { A(int); }; \nstruct B { B(int); }; \nvoid func(A); \nvoid func(B); \nint main() { func(10); }\nCompiler output:\nerror: call of overloaded ‘func(int)’ is ambiguous",
+    "target": "Semantic Error: Ambiguous Conversion Sequence"
+  },
+  {
+    "input": "explain_error: C++ code:\nstruct A { A(int); }; \nstruct B { B(int); }; \nvoid func(A); \nvoid func(B); \nint main() { func(10); }\nCompiler output:\nerror: call of overloaded ‘func(int)’ is ambiguous",
+    "target": "The compiler reports: error: call of overloaded ‘func(int)’ is ambiguous.\n\nCategory: Semantic Error – Ambiguous Conversion Sequence.\n\nReason:\nMore than one overloaded function matches the call, and neither is a better match. The compiler cannot choose (e.g. int vs double for a float argument).\n\nFix:\nAdd an explicit cast to the desired parameter type, or add or remove an overload to resolve the ambiguity."
+  },
+  {
+    "input": "classify_error: C++ code:\nvoid secure_func(double) = delete; \nint main() { secure_func(5.5); }\nCompiler output:\nerror: use of deleted function ‘void secure_func(double)’",
+    "target": "Semantic Error: Call to Deleted Function"
+  },
+  {
+    "input": "explain_error: C++ code:\nvoid secure_func(double) = delete; \nint main() { secure_func(5.5); }\nCompiler output:\nerror: use of deleted function ‘void secure_func(double)’",
+    "target": "The compiler reports: error: use of deleted function ‘void secure_func(double)’.\n\nCategory: Semantic Error – Call to Deleted Function.\n\nReason:\nA function or constructor that was explicitly deleted (= delete) is being used. Deleted functions participate in overload resolution but may not be called.\n\nFix:\nUse a different overload or API that is not deleted, or provide the missing operation if you control the type."
+  },
+  {
+    "input": "classify_error: C++ code:\nstruct NoCopy { NoCopy(const NoCopy&) = delete; }; \nint main() { NoCopy a; NoCopy b(a); }\nCompiler output:\nerror: use of deleted function ‘NoCopy::NoCopy(const NoCopy&)’",
+    "target": "Semantic Error: Attempt to Use Deleted Copy Constructor"
+  },
+  {
+    "input": "explain_error: C++ code:\nstruct NoCopy { NoCopy(const NoCopy&) = delete; }; \nint main() { NoCopy a; NoCopy b(a); }\nCompiler output:\nerror: use of deleted function ‘NoCopy::NoCopy(const NoCopy&)’",
+    "target": "The compiler reports: error: use of deleted function ‘NoCopy::NoCopy(const NoCopy&)’.\n\nCategory: Semantic Error – Attempt to Use Deleted Copy Constructor.\n\nReason:\nA function or constructor that was explicitly deleted (= delete) is being used. Deleted functions participate in overload resolution but may not be called.\n\nFix:\nUse a different overload or API that is not deleted, or provide the missing operation if you control the type."
+  },
+  {
+    "input": "classify_error: C++ code:\nstruct NonTrivial { NonTrivial(int x); }; \nstruct Wrap { NonTrivial nt = default; };\nCompiler output:\nerror: ‘NonTrivial’ cannot be defaulted",
+    "target": "Semantic Error: Invalid Defaulted Function"
+  },
+  {
+    "input": "explain_error: C++ code:\nstruct NonTrivial { NonTrivial(int x); }; \nstruct Wrap { NonTrivial nt = default; };\nCompiler output:\nerror: ‘NonTrivial’ cannot be defaulted",
+    "target": "The compiler reports: error: ‘NonTrivial’ cannot be defaulted.\n\nCategory: Semantic Error – Invalid Defaulted Function.\n\nReason:\nA special member is defaulted but the compiler cannot generate it (e.g. because a member has no default constructor).\n\nFix:\nProvide an explicit definition, or ensure all members are default-constructible or otherwise compatible."
+  },
+  {
+    "input": "classify_error: C++ code:\nint operator+(int a, int b) { return a - b; }\nCompiler output:\nerror: ‘int operator+(int, int)’ must have at least one class or enumeration type argument",
+    "target": "Semantic Error: Invalid Operator Overload Global"
+  },
+  {
+    "input": "explain_error: C++ code:\nint operator+(int a, int b) { return a - b; }\nCompiler output:\nerror: ‘int operator+(int, int)’ must have at least one class or enumeration type argument",
+    "target": "The compiler reports: error: ‘int operator+(int, int)’ must have at least one class or enumeration type argument.\n\nCategory: Semantic Error – Invalid Operator Overload Global.\n\nReason:\nAn operator is overloaded with only built-in types (e.g. int, int). User-defined operator overloads must have at least one parameter of class or enum type.\n\nFix:\nDefine the operator for a class or enum type, or use a named function instead."
+  },
+  {
+    "input": "classify_error: C++ code:\nstruct Point { int x; int operator,(int a, int b); };\nCompiler output:\nerror: ‘int Point::operator,(int, int)’ must take exactly one argument",
+    "target": "Semantic Error: Invalid Operator Arity"
+  },
+  {
+    "input": "explain_error: C++ code:\nstruct Point { int x; int operator,(int a, int b); };\nCompiler output:\nerror: ‘int Point::operator,(int, int)’ must take exactly one argument",
+    "target": "The compiler reports: error: ‘int Point::operator,(int, int)’ must take exactly one argument.\n\nCategory: Semantic Error – Invalid Operator Arity.\n\nReason:\nA member operator is declared with the wrong number of parameters. Binary operators declared as members take one parameter (the right operand); unary operators take none.\n\nFix:\nFix the parameter list to match the operator (e.g. one parameter for operator,)."
+  },
+  {
+    "input": "classify_error: C++ code:\nstruct S { static S operator+(S, S); };\nCompiler output:\nerror: ‘S S::operator+(S, S)’ must be a non-static member function",
+    "target": "Semantic Error: Static Operator Overload"
+  },
+  {
+    "input": "explain_error: C++ code:\nstruct S { static S operator+(S, S); };\nCompiler output:\nerror: ‘S S::operator+(S, S)’ must be a non-static member function",
+    "target": "The compiler reports: error: ‘S S::operator+(S, S)’ must be a non-static member function.\n\nCategory: Semantic Error – Static Operator Overload.\n\nReason:\nAn operator overload is declared static. Operator overloads that are members must be non-static.\n\nFix:\nRemove the static specifier from the operator."
+  },
+  {
+    "input": "classify_error: C++ code:\nstruct Vector { int x; Vector& operator=(const Vector& v); }; \n// Missing return value in definition\nCompiler output:\nwarning: no return statement in function returning non-void",
+    "target": "Semantic Error: Missing Return in Operator"
+  },
+  {
+    "input": "explain_error: C++ code:\nstruct Vector { int x; Vector& operator=(const Vector& v); }; \n// Missing return value in definition\nCompiler output:\nwarning: no return statement in function returning non-void",
+    "target": "The compiler reports: warning: no return statement in function returning non-void.\n\nCategory: Semantic Error – Missing Return in Operator.\n\nReason:\nA function that returns a value has a path that does not return. Every path must return a value of the return type.\n\nFix:\nAdd a return statement on all paths, or change the return type to void if no value is returned."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <iostream>\nstruct Data { int id; };\nint main() { Data d; std::cout << d; }\nCompiler output:\nerror: no match for ‘operator<<’ (operand types are ‘std::ostream’ and ‘Data’)",
+    "target": "Semantic Error: Missing Stream Insertion Overload"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <iostream>\nstruct Data { int id; };\nint main() { Data d; std::cout << d; }\nCompiler output:\nerror: no match for ‘operator<<’ (operand types are ‘std::ostream’ and ‘Data’)",
+    "target": "The compiler reports: error: no match for ‘operator<<’ (operand types are ‘std::ostream’ and ‘Data’).\n\nCategory: Semantic Error – Missing Stream Insertion Overload.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <iostream>\nint main() { int x; std::cin >> \"value\"; }\nCompiler output:\nerror: no match for ‘operator>>’ (operand types are ‘std::istream’ and ‘const char 6,’)",
+    "target": "Semantic Error: Invalid Stream Extraction Target"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <iostream>\nint main() { int x; std::cin >> \"value\"; }\nCompiler output:\nerror: no match for ‘operator>>’ (operand types are ‘std::istream’ and ‘const char 6,’)",
+    "target": "The compiler reports: error: no match for ‘operator>>’ (operand types are ‘std::istream’ and ‘const char 6,’).\n\nCategory: Semantic Error – Invalid Stream Extraction Target.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <fstream>\nint main() { std::ifstream file = \"data.txt\"; }\nCompiler output:\nerror: conversion from ‘const char 9,’ to non-scalar type ‘std::ifstream’ requested",
+    "target": "Semantic Error: Invalid File Stream Initialization"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <fstream>\nint main() { std::ifstream file = \"data.txt\"; }\nCompiler output:\nerror: conversion from ‘const char 9,’ to non-scalar type ‘std::ifstream’ requested",
+    "target": "The compiler reports: error: conversion from ‘const char 9,’ to non-scalar type ‘std::ifstream’ requested.\n\nCategory: Semantic Error – Invalid File Stream Initialization.\n\nReason:\nA value is used where a different type is required. C++ does not allow implicit conversion between incompatible types (e.g. pointer and integer, or unrelated class types).\n\nFix:\nUse an explicit cast only when the conversion is well-defined, or change the variable or parameter type to match the value you provide."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <iostream>\nint main() { std::cout << std::endl; }\n// Missing #include <iostream>\nCompiler output:\nerror: ‘endl’ is not a member of ‘std’",
+    "target": "Semantic Error: Missing Header for Stream Manipulator"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <iostream>\nint main() { std::cout << std::endl; }\n// Missing #include <iostream>\nCompiler output:\nerror: ‘endl’ is not a member of ‘std’",
+    "target": "The compiler reports: error: ‘endl’ is not a member of ‘std’.\n\nCategory: Semantic Error – Missing Header for Stream Manipulator.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <fstream>\nint main() { std::ofstream out(\"test.txt\"); out << std::cin; }\nCompiler output:\nerror: no match for ‘operator<<’ (operand types are ‘std::ofstream’ and ‘std::istream’)",
+    "target": "Semantic Error: Invalid Stream-to-Stream Operation"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <fstream>\nint main() { std::ofstream out(\"test.txt\"); out << std::cin; }\nCompiler output:\nerror: no match for ‘operator<<’ (operand types are ‘std::ofstream’ and ‘std::istream’)",
+    "target": "The compiler reports: error: no match for ‘operator<<’ (operand types are ‘std::ofstream’ and ‘std::istream’).\n\nCategory: Semantic Error – Invalid Stream-to-Stream Operation.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <iomanip>\nint main() { std::cout << setprecision(2) << 5.555; }\n// Missing std:: prefix\nCompiler output:\nerror: ‘setprecision’ was not declared in this scope",
+    "target": "Semantic Error: Unqualified Name in I/O Manipulator"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <iomanip>\nint main() { std::cout << setprecision(2) << 5.555; }\n// Missing std:: prefix\nCompiler output:\nerror: ‘setprecision’ was not declared in this scope",
+    "target": "The compiler reports: error: ‘setprecision’ was not declared in this scope.\n\nCategory: Semantic Error – Unqualified Name in I/O Manipulator.\n\nReason:\nThe identifier 'setprecision' is used but has not been declared in this scope. In C++, every identifier must be declared before use.\n\nFix:\nDeclare the variable or function before use, or fix the spelling (e.g. use the compiler-suggested alternative)."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <iostream>\nint main() { int x; std::cout >> x; }\nCompiler output:\nerror: no match for ‘operator>>’ (operand types are ‘std::ostream’ and ‘int’)",
+    "target": "Semantic Error: Incorrect Stream Operator Direction"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <iostream>\nint main() { int x; std::cout >> x; }\nCompiler output:\nerror: no match for ‘operator>>’ (operand types are ‘std::ostream’ and ‘int’)",
+    "target": "The compiler reports: error: no match for ‘operator>>’ (operand types are ‘std::ostream’ and ‘int’).\n\nCategory: Semantic Error – Incorrect Stream Operator Direction.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <fstream>\nint main() { std::fstream fs; fs.open(\"file.txt\", std::ios::in | std::ios::out); fs << std::endl }\nCompiler output:\nerror: expected ‘;’ before ‘}’ token",
+    "target": "Syntax Error: Missing Semicolon"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <fstream>\nint main() { std::fstream fs; fs.open(\"file.txt\", std::ios::in | std::ios::out); fs << std::endl }\nCompiler output:\nerror: expected ‘;’ before ‘}’ token",
+    "target": "The compiler reports: error: expected ‘;’ before ‘}’ token.\n\nCategory: Syntax Error – Missing Semicolon.\n\nReason:\nA statement is missing a semicolon before a closing brace. In C++, every statement must end with a semicolon.\n\nFix:\nAdd a semicolon after the last statement inside the block (e.g. after the return or the last declaration)."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <iostream>\nint main() { std::cout << \"Hello\" <<; }\nCompiler output:\nerror: expected primary-expression before ‘;’ token",
+    "target": "Syntax Error: Incomplete Stream Chain"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <iostream>\nint main() { std::cout << \"Hello\" <<; }\nCompiler output:\nerror: expected primary-expression before ‘;’ token",
+    "target": "The compiler reports: error: expected primary-expression before ‘;’ token.\n\nCategory: Syntax Error – Incomplete Stream Chain.\n\nReason:\nThe parser expected a semicolon at this location. In C++, statements and declarations end with a semicolon.\n\nFix:\nAdd the missing semicolon at the position indicated by the compiler."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <iostream>\nint main() { char buf10,; std::cin.getline(char* b, 10); }\nCompiler output:\nerror: expected primary-expression before ‘char’",
+    "target": "Syntax Error: Invalid Function Argument Syntax"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <iostream>\nint main() { char buf10,; std::cin.getline(char* b, 10); }\nCompiler output:\nerror: expected primary-expression before ‘char’",
+    "target": "The compiler reports: error: expected primary-expression before ‘char’.\n\nCategory: Syntax Error – Invalid Function Argument Syntax.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { void* p = nullptr; p++; }\nCompiler output:\nerror: arithmetic on pointer to an incomplete type ‘void’",
+    "target": "Semantic Error: Invalid Pointer Arithmetic"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { void* p = nullptr; p++; }\nCompiler output:\nerror: arithmetic on pointer to an incomplete type ‘void’",
+    "target": "The compiler reports: error: arithmetic on pointer to an incomplete type ‘void’.\n\nCategory: Semantic Error – Invalid Pointer Arithmetic.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <memory>\nint main() { std::unique_ptr<int> p = new int(5); }\nCompiler output:\nerror: no viable conversion from ‘int*’ to ‘std::unique_ptr<int>’",
+    "target": "Semantic Error: Implicit Conversion to Smart Pointer"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <memory>\nint main() { std::unique_ptr<int> p = new int(5); }\nCompiler output:\nerror: no viable conversion from ‘int*’ to ‘std::unique_ptr<int>’",
+    "target": "The compiler reports: error: no viable conversion from ‘int*’ to ‘std::unique_ptr<int>’.\n\nCategory: Semantic Error – Implicit Conversion to Smart Pointer.\n\nReason:\nA value is used where a different type is required. C++ does not allow implicit conversion between incompatible types (e.g. pointer and integer, or unrelated class types).\n\nFix:\nUse an explicit cast only when the conversion is well-defined, or change the variable or parameter type to match the value you provide."
+  },
+  {
+    "input": "classify_error: C++ code:\nstruct S { void f(); }; int main() { void (S::*ptr)() = S::f; }\nCompiler output:\nerror: cannot create a non-constant pointer to member function ‘void S::f()’ without &",
+    "target": "Semantic Error: Missing Address-of for Member Pointer"
+  },
+  {
+    "input": "explain_error: C++ code:\nstruct S { void f(); }; int main() { void (S::*ptr)() = S::f; }\nCompiler output:\nerror: cannot create a non-constant pointer to member function ‘void S::f()’ without &",
+    "target": "The compiler reports: error: cannot create a non-constant pointer to member function ‘void S::f()’ without &.\n\nCategory: Semantic Error – Missing Address-of for Member Pointer.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int* p; delete, p; }\nCompiler output:\nwarning: ‘delete,’ applied to a non-array object ‘p’",
+    "target": "Semantic Error: Mismatched Deallocation Type"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int* p; delete, p; }\nCompiler output:\nwarning: ‘delete,’ applied to a non-array object ‘p’",
+    "target": "The compiler reports: warning: ‘delete,’ applied to a non-array object ‘p’.\n\nCategory: Semantic Error – Mismatched Deallocation Type.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int x = 10; int* const p = &x; p = nullptr; }\nCompiler output:\nerror: assignment of read-only variable ‘p’",
+    "target": "Semantic Error: Modification of Const Pointer"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int x = 10; int* const p = &x; p = nullptr; }\nCompiler output:\nerror: assignment of read-only variable ‘p’",
+    "target": "The compiler reports: error: assignment of read-only variable ‘p’.\n\nCategory: Semantic Error – Modification of Const Pointer.\n\nReason:\nAn attempt is made to modify an object declared const or passed as a const reference. Const-qualified objects and references cannot be assigned to or modified.\n\nFix:\nRemove the modification, or change the declaration to non-const if the object is meant to be mutable."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <memory>\nint main() { std::shared_ptr<int> p; int x = *p; }\nCompiler output:\nwarning: potential null pointer dereference",
+    "target": "Semantic Error: Null Pointer Dereference"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <memory>\nint main() { std::shared_ptr<int> p; int x = *p; }\nCompiler output:\nwarning: potential null pointer dereference",
+    "target": "The compiler reports: warning: potential null pointer dereference.\n\nCategory: Semantic Error – Null Pointer Dereference.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nstruct A { int x; }; int main() { A* a = nullptr; int A::*p = &A::x; int val = a.*p; }\nCompiler output:\nerror: left hand operand to .* must be an object, not a pointer",
+    "target": "Syntax Error: Invalid Pointer-to-Member Operator"
+  },
+  {
+    "input": "explain_error: C++ code:\nstruct A { int x; }; int main() { A* a = nullptr; int A::*p = &A::x; int val = a.*p; }\nCompiler output:\nerror: left hand operand to .* must be an object, not a pointer",
+    "target": "The compiler reports: error: left hand operand to .* must be an object, not a pointer.\n\nCategory: Syntax Error – Invalid Pointer-to-Member Operator.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int arr5,; int* p = arr + 10; }\nCompiler output:\nwarning: array index 10 is past the end of the array",
+    "target": "Semantic Error: Pointer Out of Bounds"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int arr5,; int* p = arr + 10; }\nCompiler output:\nwarning: array index 10 is past the end of the array",
+    "target": "The compiler reports: warning: array index 10 is past the end of the array.\n\nCategory: Semantic Error – Pointer Out of Bounds.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int* p = new int5,; delete p; }\nCompiler output:\nwarning: ‘delete’ used on an array, did you mean ‘delete,’?",
+    "target": "Semantic Error: Mismatched Array Deallocation"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int* p = new int5,; delete p; }\nCompiler output:\nwarning: ‘delete’ used on an array, did you mean ‘delete,’?",
+    "target": "The compiler reports: warning: ‘delete’ used on an array, did you mean ‘delete,’?.\n\nCategory: Semantic Error – Mismatched Array Deallocation.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <memory>\nint main() { std::unique_ptr<int> p = std::make_unique<int>(10); p.release(); *p = 5; }\nCompiler output:\nwarning: dereferencing a released unique_ptr",
+    "target": "Semantic Error: Use After Release"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <memory>\nint main() { std::unique_ptr<int> p = std::make_unique<int>(10); p.release(); *p = 5; }\nCompiler output:\nwarning: dereferencing a released unique_ptr",
+    "target": "The compiler reports: warning: dereferencing a released unique_ptr.\n\nCategory: Semantic Error – Use After Release.\n\nReason:\nA null or released pointer is dereferenced. Dereferencing a null or invalid pointer is undefined behavior.\n\nFix:\nCheck that the pointer is non-null and valid before dereferencing; do not use it after release or delete."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int x = 1 << 33; }\nCompiler output:\nwarning: left shift count >= width of type -Wshift-count-overflow,",
+    "target": "Semantic Error: Bit Shift Overflow"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int x = 1 << 33; }\nCompiler output:\nwarning: left shift count >= width of type -Wshift-count-overflow,",
+    "target": "The compiler reports: warning: left shift count >= width of type -Wshift-count-overflow,.\n\nCategory: Semantic Error – Bit Shift Overflow.\n\nReason:\nA shift count is too large or negative for the operand type. Shifting by a count >= bit width of the type is undefined behavior.\n\nFix:\nEnsure the shift count is in range [0, width-1] for the operand type."
+  },
+  {
+    "input": "classify_error: C++ code:\nenum class Mode { Read = 1, Write = 2 };\nint main() { Mode m = Mode::Read | Mode::Write; }\nCompiler output:\nerror: no match for ‘operator|’ (operand types are ‘Mode’ and ‘Mode’)",
+    "target": "Semantic Error: Invalid Bitwise Operation on Scoped Enum"
+  },
+  {
+    "input": "explain_error: C++ code:\nenum class Mode { Read = 1, Write = 2 };\nint main() { Mode m = Mode::Read | Mode::Write; }\nCompiler output:\nerror: no match for ‘operator|’ (operand types are ‘Mode’ and ‘Mode’)",
+    "target": "The compiler reports: error: no match for ‘operator|’ (operand types are ‘Mode’ and ‘Mode’).\n\nCategory: Semantic Error – Invalid Bitwise Operation on Scoped Enum.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\nstruct S { int b : 40; };\nCompiler output:\nerror: width of ‘S::b’ exceeds its type",
+    "target": "Semantic Error: Invalid Bitfield Width"
+  },
+  {
+    "input": "explain_error: C++ code:\nstruct S { int b : 40; };\nCompiler output:\nerror: width of ‘S::b’ exceeds its type",
+    "target": "The compiler reports: error: width of ‘S::b’ exceeds its type.\n\nCategory: Semantic Error – Invalid Bitfield Width.\n\nReason:\nA bit-field is declared with a width larger than its type. The width in bits must not exceed the size of the underlying type.\n\nFix:\nUse a larger type for the bit-field or reduce the width."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { unsigned int x = -1 << 2; }\nCompiler output:\nwarning: left shift of negative value -Wshift-negative-value,",
+    "target": "Semantic Error: Negative Bit Shift"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { unsigned int x = -1 << 2; }\nCompiler output:\nwarning: left shift of negative value -Wshift-negative-value,",
+    "target": "The compiler reports: warning: left shift of negative value -Wshift-negative-value,.\n\nCategory: Semantic Error – Negative Bit Shift.\n\nReason:\nA negative value is used as the left operand of a left shift. Left-shifting a negative value has implementation-defined or undefined behavior.\n\nFix:\nUse an unsigned type or a non-negative value for the left operand."
+  },
+  {
+    "input": "classify_error: C++ code:\nstruct Flags { unsigned int a:1; };\nint main() { Flags f; unsigned int* p = &f.a; }\nCompiler output:\nerror: cannot take address of bit-field ‘f.a’",
+    "target": "Semantic Error: Address of Bitfield"
+  },
+  {
+    "input": "explain_error: C++ code:\nstruct Flags { unsigned int a:1; };\nint main() { Flags f; unsigned int* p = &f.a; }\nCompiler output:\nerror: cannot take address of bit-field ‘f.a’",
+    "target": "The compiler reports: error: cannot take address of bit-field ‘f.a’.\n\nCategory: Semantic Error – Address of Bitfield.\n\nReason:\nThe address-of operator is applied to a bit-field. Bit-fields may not have their address taken because they might not be byte-addressable.\n\nFix:\nUse a copy in a variable and take the address of that variable if needed."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int x = 10; int y = x ~ 5; }\nCompiler output:\nerror: expected ‘;’ before ‘~’ token",
+    "target": "Syntax Error: Invalid Bitwise Syntax"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int x = 10; int y = x ~ 5; }\nCompiler output:\nerror: expected ‘;’ before ‘~’ token",
+    "target": "The compiler reports: error: expected ‘;’ before ‘~’ token.\n\nCategory: Syntax Error – Invalid Bitwise Syntax.\n\nReason:\nThe parser expected a semicolon at this location. In C++, statements and declarations end with a semicolon.\n\nFix:\nAdd the missing semicolon at the position indicated by the compiler."
+  },
+  {
+    "input": "classify_error: C++ code:\nenum { A = 1.5 };\nCompiler output:\nerror: enumerator value for ‘A’ is not an integer constant",
+    "target": "Semantic Error: Non-Integer Enum Value"
+  },
+  {
+    "input": "explain_error: C++ code:\nenum { A = 1.5 };\nCompiler output:\nerror: enumerator value for ‘A’ is not an integer constant",
+    "target": "The compiler reports: error: enumerator value for ‘A’ is not an integer constant.\n\nCategory: Semantic Error – Non-Integer Enum Value.\n\nReason:\nAn enumeration constant is given a non-integer value. Enumerator values must be of integral type.\n\nFix:\nUse an integer literal or constant expression for the enumerator value."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { int x = 1; x <<= -1; }\nCompiler output:\nwarning: shift count is negative -Wshift-count-negative,",
+    "target": "Semantic Error: Negative Shift Count"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { int x = 1; x <<= -1; }\nCompiler output:\nwarning: shift count is negative -Wshift-count-negative,",
+    "target": "The compiler reports: warning: shift count is negative -Wshift-count-negative,.\n\nCategory: Semantic Error – Negative Shift Count.\n\nReason:\nThe right operand of a shift is negative. Shift counts must be non-negative and less than the bit width.\n\nFix:\nUse a non-negative shift count."
+  },
+  {
+    "input": "classify_error: C++ code:\nenum Color { Red }; enum Traffic { Red };\nCompiler output:\nerror: redefinition of ‘Red’",
+    "target": "Semantic Error: Enum Symbol Collision"
+  },
+  {
+    "input": "explain_error: C++ code:\nenum Color { Red }; enum Traffic { Red };\nCompiler output:\nerror: redefinition of ‘Red’",
+    "target": "The compiler reports: error: redefinition of ‘Red’.\n\nCategory: Semantic Error – Enum Symbol Collision.\n\nReason:\nA function or variable is defined more than once in a way that violates the One Definition Rule. In C++, each function and non-inline variable must have exactly one definition (within the same linkage).\n\nFix:\nKeep a single definition, or make the function inline or define it in a header with proper include guards."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { bool b = true; b >>= 1; }\nCompiler output:\nerror: invalid operands of types ‘bool’ and ‘int’ to binary ‘operator>>=’",
+    "target": "Semantic Error: Invalid Bitwise Assignment"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { bool b = true; b >>= 1; }\nCompiler output:\nerror: invalid operands of types ‘bool’ and ‘int’ to binary ‘operator>>=’",
+    "target": "The compiler reports: error: invalid operands of types ‘bool’ and ‘int’ to binary ‘operator>>=’.\n\nCategory: Semantic Error – Invalid Bitwise Assignment.\n\nReason:\nA bitwise compound assignment operator is applied to a bool. Such operators are not defined for bool in the way used.\n\nFix:\nUse an integer type for bitwise operations, or use a different operation."
+  },
+  {
+    "input": "classify_error: C++ code:\nconstexpr int square(int x) { return x * x; }\nint main() { int n; std::cin >> n; constexpr int res = square(n); }\nCompiler output:\nerror: the value of ‘n’ is not usable in a constant expression",
+    "target": "Semantic Error: Non-Constant Value in Constexpr"
+  },
+  {
+    "input": "explain_error: C++ code:\nconstexpr int square(int x) { return x * x; }\nint main() { int n; std::cin >> n; constexpr int res = square(n); }\nCompiler output:\nerror: the value of ‘n’ is not usable in a constant expression",
+    "target": "The compiler reports: error: the value of ‘n’ is not usable in a constant expression.\n\nCategory: Semantic Error – Non-Constant Value in Constexpr.\n\nReason:\nA non-constant value is used where a constant expression is required. Constexpr and template arguments require compile-time constant values.\n\nFix:\nUse a literal or constexpr value, or move the computation out of the constant expression context."
+  },
+  {
+    "input": "classify_error: C++ code:\ntemplate <typename T> struct Check { static_assert(sizeof(T) > 4, \"Type too small\"); };\nint main() { Check<char> c; }\nCompiler output:\nerror: static assertion failed: Type too small",
+    "target": "Semantic Error: Static Assertion Failure"
+  },
+  {
+    "input": "explain_error: C++ code:\ntemplate <typename T> struct Check { static_assert(sizeof(T) > 4, \"Type too small\"); };\nint main() { Check<char> c; }\nCompiler output:\nerror: static assertion failed: Type too small",
+    "target": "The compiler reports: error: static assertion failed: Type too small.\n\nCategory: Semantic Error – Static Assertion Failure.\n\nReason:\nA static_assert condition evaluated to false. static_assert checks a compile-time condition and fails compilation if it is false.\n\nFix:\nFix the condition so it is true, or fix the types/values that make it false."
+  },
+  {
+    "input": "classify_error: C++ code:\nnodiscard,, int get_error() { return -1; }\nint main() { get_error(); }\nCompiler output:\nwarning: ignoring return value of ‘int get_error()’, declared with attribute ‘nodiscard’",
+    "target": "Semantic Error: Ignored Nodiscard Value"
+  },
+  {
+    "input": "explain_error: C++ code:\nnodiscard,, int get_error() { return -1; }\nint main() { get_error(); }\nCompiler output:\nwarning: ignoring return value of ‘int get_error()’, declared with attribute ‘nodiscard’",
+    "target": "The compiler reports: warning: ignoring return value of ‘int get_error()’, declared with attribute ‘nodiscard’.\n\nCategory: Semantic Error – Ignored Nodiscard Value.\n\nReason:\nThe return value of a function declared [[nodiscard]] is discarded. The attribute indicates that ignoring the return value is likely a bug.\n\nFix:\nUse the return value or assign it to (void) to explicitly ignore it if intended."
+  },
+  {
+    "input": "classify_error: C++ code:\nconstexpr int f(int x) { if (x > 0) return x; throw 1; }\nint main() { constexpr int y = f(-1); }\nCompiler output:\nerror: expression ‘<throw-expression>’ is not a constant expression",
+    "target": "Semantic Error: Non-Constant Path in Constexpr"
+  },
+  {
+    "input": "explain_error: C++ code:\nconstexpr int f(int x) { if (x > 0) return x; throw 1; }\nint main() { constexpr int y = f(-1); }\nCompiler output:\nerror: expression ‘<throw-expression>’ is not a constant expression",
+    "target": "The compiler reports: error: expression ‘<throw-expression>’ is not a constant expression.\n\nCategory: Semantic Error – Non-Constant Path in Constexpr.\n\nReason:\nA constexpr function or context evaluates a throw expression. Constant evaluation cannot throw.\n\nFix:\nEnsure the constexpr path does not throw, or do not use the result in a constant expression."
+  },
+  {
+    "input": "classify_error: C++ code:\ndeprecated(\"Use new_f instead\"),, void old_f();\nint main() { old_f(); }\nCompiler output:\nwarning: ‘void old_f()’ is deprecated: Use new_f instead",
+    "target": "Semantic Error: Deprecated Function Usage"
+  },
+  {
+    "input": "explain_error: C++ code:\ndeprecated(\"Use new_f instead\"),, void old_f();\nint main() { old_f(); }\nCompiler output:\nwarning: ‘void old_f()’ is deprecated: Use new_f instead",
+    "target": "The compiler reports: warning: ‘void old_f()’ is deprecated: Use new_f instead.\n\nCategory: Semantic Error – Deprecated Function Usage.\n\nReason:\nA deprecated function or entity is used. Deprecation warns that the feature may be removed in the future.\n\nFix:\nReplace the use with the recommended alternative mentioned in the warning."
+  },
+  {
+    "input": "classify_error: C++ code:\nint main() { maybe_unused,, int x = 5; unknown_attr,, int y = 10; }\nCompiler output:\nwarning: unknown attribute ‘unknown_attr’ ignored",
+    "target": "Syntax Error: Unknown Attribute"
+  },
+  {
+    "input": "explain_error: C++ code:\nint main() { maybe_unused,, int x = 5; unknown_attr,, int y = 10; }\nCompiler output:\nwarning: unknown attribute ‘unknown_attr’ ignored",
+    "target": "The compiler reports: warning: unknown attribute ‘unknown_attr’ ignored.\n\nCategory: Syntax Error – Unknown Attribute.\n\nReason:\nAn attribute name is not recognized by the compiler. Attributes are compiler- or standard-specific.\n\nFix:\nFix the attribute name, remove it, or use a supported attribute for your compiler."
+  },
+  {
+    "input": "classify_error: C++ code:\nstruct S { fallthrough,, int x; };\nCompiler output:\nerror: attribute ‘fallthrough’ can only be applied to a null statement",
+    "target": "Semantic Error: Misplaced Attribute"
+  },
+  {
+    "input": "explain_error: C++ code:\nstruct S { fallthrough,, int x; };\nCompiler output:\nerror: attribute ‘fallthrough’ can only be applied to a null statement",
+    "target": "The compiler reports: error: attribute ‘fallthrough’ can only be applied to a null statement.\n\nCategory: Semantic Error – Misplaced Attribute.\n\nReason:\nAn attribute is used in a context where it is not allowed. Attributes like fallthrough apply only in specific places.\n\nFix:\nMove or remove the attribute so it applies in an allowed context."
+  },
+  {
+    "input": "classify_error: C++ code:\nconsteval int fast_f(int x) { return x; }\nint main() { int x = 5; int y = fast_f(x); }\nCompiler output:\nerror: call to consteval function ‘fast_f(x)’ is not a constant expression",
+    "target": "Semantic Error: Immediate Function Context Violation"
+  },
+  {
+    "input": "explain_error: C++ code:\nconsteval int fast_f(int x) { return x; }\nint main() { int x = 5; int y = fast_f(x); }\nCompiler output:\nerror: call to consteval function ‘fast_f(x)’ is not a constant expression",
+    "target": "The compiler reports: error: call to consteval function ‘fast_f(x)’ is not a constant expression.\n\nCategory: Semantic Error – Immediate Function Context Violation.\n\nReason:\nA consteval function is called with a non-constant argument. consteval functions must be evaluated at compile time.\n\nFix:\nPass only constant expressions to the function, or change it to constexpr if runtime calls are needed."
+  },
+  {
+    "input": "classify_error: C++ code:\nconstexpr int x = 10; \nint arrx, = {0};\n// Valid, but if x was not constexpr:\nint n = 5; int arr2n,;\nCompiler output:\nerror: ISO C++ forbids variable length array ‘arr2’",
+    "target": "Semantic Error: Variable Length Array Forbidden"
+  },
+  {
+    "input": "explain_error: C++ code:\nconstexpr int x = 10; \nint arrx, = {0};\n// Valid, but if x was not constexpr:\nint n = 5; int arr2n,;\nCompiler output:\nerror: ISO C++ forbids variable length array ‘arr2’",
+    "target": "The compiler reports: error: ISO C++ forbids variable length array ‘arr2’.\n\nCategory: Semantic Error – Variable Length Array Forbidden.\n\nReason:\nAn array is declared with a size that is not a constant expression. In standard C++, array bounds must be compile-time constants.\n\nFix:\nUse a constant size, or use std::vector (or another container) for a runtime size."
+  },
+  {
+    "input": "classify_error: C++ code:\nstatic_assert(5 > 10);\nCompiler output:\nerror: static assertion failed",
+    "target": "Semantic Error: Static Assertion Failure"
+  },
+  {
+    "input": "explain_error: C++ code:\nstatic_assert(5 > 10);\nCompiler output:\nerror: static assertion failed",
+    "target": "The compiler reports: error: static assertion failed.\n\nCategory: Semantic Error – Static Assertion Failure.\n\nReason:\nA static_assert condition evaluated to false. static_assert checks a compile-time condition and fails compilation if it is false.\n\nFix:\nFix the condition so it is true, or fix the types/values that make it false."
+  },
+  {
+    "input": "classify_error: C++ code:\n#include <concepts>\ntemplate <std::integral T> void f(T v) {}\nint main() { f(3.14); }\nCompiler output:\nerror: no matching function for call to ‘f(double)’\nnote: constraints not satisfied with T = double,\nnote: the expression ‘std::is_integral_v<T>’ evaluated to ‘false’",
+    "target": "Semantic Error: Concept Constraint Not Satisfied"
+  },
+  {
+    "input": "explain_error: C++ code:\n#include <concepts>\ntemplate <std::integral T> void f(T v) {}\nint main() { f(3.14); }\nCompiler output:\nerror: no matching function for call to ‘f(double)’\nnote: constraints not satisfied with T = double,\nnote: the expression ‘std::is_integral_v<T>’ evaluated to ‘false’",
+    "target": "The compiler reports: error: no matching function for call to ‘f(double)’.\n\nCategory: Semantic Error – Concept Constraint Not Satisfied.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\ntemplate <typename T> void f(T x, T y) {}\nint main() { f(10, \"abc\"); }\nCompiler output:\nerror: no matching function for call to ‘f(int, const char 4,)’\nnote: deduced conflicting types for parameter ‘T’ (‘int’ and ‘const char 4,’)",
+    "target": "Semantic Error: Template Deduction Conflict"
+  },
+  {
+    "input": "explain_error: C++ code:\ntemplate <typename T> void f(T x, T y) {}\nint main() { f(10, \"abc\"); }\nCompiler output:\nerror: no matching function for call to ‘f(int, const char 4,)’\nnote: deduced conflicting types for parameter ‘T’ (‘int’ and ‘const char 4,’)",
+    "target": "The compiler reports: error: no matching function for call to ‘f(int, const char 4,)’.\n\nCategory: Semantic Error – Template Deduction Conflict.\n\nReason:\nThe code violates a C++ language rule that the compiler checks. The compiler message indicates the location and nature of the violation.\n\nFix:\nAddress the violation at the reported location: correct types, add missing declarations or definitions, fix syntax (e.g. semicolons or parentheses), or match function arguments and return types to their declarations."
+  },
+  {
+    "input": "classify_error: C++ code:\ntemplate <typename... Args> void f(Args... args) { int x = args; }\nint main() { f(1, 2, 3); }\nCompiler output:\nerror: initializer contains unexpanded parameter pack ‘args’",
+    "target": "Semantic Error: Unexpanded Parameter Pack"
+  },
+  {
+    "input": "explain_error: C++ code:\ntemplate <typename... Args> void f(Args... args) { int x = args; }\nint main() { f(1, 2, 3); }\nCompiler output:\nerror: initializer contains unexpanded parameter pack ‘args’",
+    "target": "The compiler reports: error: initializer contains unexpanded parameter pack ‘args’.\n\nCategory: Semantic Error – Unexpanded Parameter Pack.\n\nReason:\nA parameter pack is used in an expression without being expanded. Parameter packs must be expanded with ... in contexts that use each element.\n\nFix:\nExpand the pack (e.g. with (args, ...) or a fold expression) where you use it."
+  }
+]

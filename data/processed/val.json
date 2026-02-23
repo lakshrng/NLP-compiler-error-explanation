@@ -1,0 +1,202 @@
+[
+    {
+       "input": "classify_error: C++ code:\ntemplate <typename T> struct S { using type = typename T::value_type; };\nint main() { S<int> s; }\nCompiler output:\nerror: ‘int’ is not a class, struct, or union type",
+       "target": "Semantic Error: Substitution Failure (SFINAE)"
+     },
+     {
+       "input": "classify_error: C++ code:\ntemplate <typename T> requires (sizeof(T) > 4) void check() {}\nint main() { check<char>(); }\nCompiler output:\nerror: no matching function for call to ‘check<char>()’\nnote: constraints not satisfied\nnote: the expression ‘sizeof (T) > 4’ evaluated to ‘false’",
+       "target": "Semantic Error: Requires Clause Violation"
+     },
+     {
+       "input": "classify_error: C++ code:\ntemplate <typename T> void f() { T::foo(); }\nint main() { f<int>(); }\nCompiler output:\nerror: ‘int’ is not a class, struct, or union type",
+       "target": "Semantic Error: Invalid Dependent Name Access"
+     },
+     {
+       "input": "classify_error: C++ code:\ntemplate <typename T> void f(T a) {} \ntemplate <typename T> void f(T* a) {}\nint main() { f(nullptr); }\nCompiler output:\nerror: call of overloaded ‘f(std::nullptr_t)’ is ambiguous",
+       "target": "Semantic Error: Template Overload Ambiguity"
+     },
+     {
+       "input": "classify_error: C++ code:\ntemplate <typename T> struct Outer { template <typename U> void inner(); };\nint main() { Outer<int> o; o.inner<double>(); }\nCompiler output:\nerror: expected ‘template’ keyword before ‘inner’",
+       "target": "Syntax Error: Missing Template Disambiguator"
+     },
+     {
+       "input": "classify_error: C++ code:\ntemplate <int N> struct Fact { static const int val = N * Fact<N-1>::val; };\ntemplate <> struct Fact<0> { static const int val = 1; };\nint main() { int x = Fact<1000>::val; }\nCompiler output:\nerror: template instantiation depth exceeds maximum of 900",
+       "target": "Semantic Error: Maximum Instantiation Depth Exceeded"
+     },
+     {
+       "input": "classify_error: C++ code:\ntemplate <typename T> concept HasDraw = requires(T v) { v.draw(); };\nstruct Circle {}; \nstatic_assert(HasDraw<Circle>);\nCompiler output:\nerror: static assertion failed",
+       "target": "Semantic Error: Concept Requirement Failure"
+     }
+   ,
+   
+     {
+       "input": "classify_error: C++ code:\nint main() { int x = 10; auto f = ,() { return x; }; }\nCompiler output:\nerror: variable ‘x’ cannot be implicitly captured in a lambda with no capture-default",
+       "target": "Semantic Error: Missing Lambda Capture"
+     },
+     {
+       "input": "classify_error: C++ code:\nint main() { int x = 5; auto f = x,() { x = 10; }; }\nCompiler output:\nerror: assignment of read-only variable in lambda ‘f’",
+       "target": "Semantic Error: Modification of Non-Mutable Lambda Capture"
+     },
+     {
+       "input": "classify_error: C++ code:\nstruct S { void f() { auto l = ,() { g(); }; } void g(); };\nCompiler output:\nerror: ‘this’ was not captured for this lambda function",
+       "target": "Semantic Error: Missing This-Pointer Capture"
+     },
+     {
+       "input": "classify_error: C++ code:\nint main() { auto f = ,(auto x, auto y) { return x + y; }; f(10, \"str\"); }\nCompiler output:\nerror: invalid operands of types ‘int’ and ‘const char*’ to binary ‘operator+’",
+       "target": "Semantic Error: Generic Lambda Instantiation Failure"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <functional>\nvoid call(std::function<void(int)> func) {}\nint main() { call(,(std::string s){}); }\nCompiler output:\nerror: no viable conversion from ‘lambda’ to ‘std::function<void(int)>’",
+       "target": "Semantic Error: Functional Signature Mismatch"
+     },
+     {
+       "input": "classify_error: C++ code:\nint main() { auto f = ,(int x) -> int { if(x > 0) return x; else return 3.5; }; }\nCompiler output:\nerror: inconsistent types ‘int’ and ‘double’ deduced for lambda return type",
+       "target": "Semantic Error: Ambiguous Lambda Return Type"
+     },
+     {
+       "input": "classify_error: C++ code:\nint main() { auto f = ptr = nullptr,() { *ptr = 10; }; }\nCompiler output:\nerror: dereferencing ‘void*’ pointer",
+       "target": "Semantic Error: Invalid Capture Initialization"
+     },
+     {
+       "input": "classify_error: C++ code:\nint main() { auto l = =, &x = some_var,() {}; }\n// where some_var is not defined\nCompiler output:\nerror: ‘some_var’ was not declared in this scope",
+       "target": "Semantic Error: Invalid Capture Initializer"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <algorithm>\nint main() { int arr3, = {1,2,3}; std::for_each(arr, arr+3, ,(int& n) const { n++; }); }\nCompiler output:\nerror: expected ‘{’ before ‘const’",
+       "target": "Syntax Error: Invalid Lambda Specifier"
+     },
+     {
+       "input": "classify_error: C++ code:\nint main() { auto f = ,<typename T>(T x) { return x.size(); }; f(10); }\nCompiler output:\nerror: ‘int’ has no member named ‘size’",
+       "target": "Semantic Error: Explicit Template Lambda Failure"
+     }
+   ,
+   
+   
+     {
+       "input": "classify_error: C++ code:\n#include <ranges>\n#include <vector>\nint main() { std::vector<int> v = {1, 2, 3}; auto r = v | std::views::filter(,(int n) { return n > 0; }); v.push_back(4); int x = *r.begin(); }\nCompiler output:\nwarning: use of range-view after underlying container modification",
+       "target": "Semantic Error: Range Iterator Invalidation"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <ranges>\n#include <list>\nint main() { std::list<int> l = {1, 2, 3}; auto r = l | std::views::reverse;\nCompiler output:\nerror: no match for ‘operator|’ (operand types are ‘std::list<int>’ and ‘std::views::_Reverse’)\nnote: ‘std::views::reverse’ requires random_access_range",
+       "target": "Semantic Error: Range Constraint Violation"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <algorithm>\nint main() { int arr, = {1, 2, 3}; std::sort(std::begin(arr), std::end(arr), ,(int a, int b) { return a == b; }); }\nCompiler output:\nerror: comparison function must be a strict weak ordering",
+       "target": "Semantic Error: Invalid Algorithm Comparator"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <ranges>\nint main() { auto r = std::views::iota(1) | std::views::take(5); r0, = 10; }\nCompiler output:\nerror: cannot assign to a value of a read-only range",
+       "target": "Semantic Error: Modification of Immutable View"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <vector>\nint main() { std::vector<int> v; auto it = v.begin(); v.insert(it, 10); *it = 5; }\nCompiler output:\nwarning: use of invalidated iterator ‘it’ after ‘insert’",
+       "target": "Semantic Error: Iterator Invalidation"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <ranges>\nint main() { auto r = std::views::single(5); r.push_back(10); }\nCompiler output:\nerror: ‘std::ranges::single_view<int>’ has no member named ‘push_back’",
+       "target": "Semantic Error: Invalid Range Member Access"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <iterator>\nint main() { std::back_insert_iterator<int> it; }\nCompiler output:\nerror: no matching constructor for initialization of ‘std::back_insert_iterator<int>’",
+       "target": "Semantic Error: Missing Container for Insert Iterator"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <ranges>\nint main() { auto r = std::views::all(5); }\nCompiler output:\nerror: no matching function for call to ‘all(int)’\nnote: ‘views::all’ requires a range type",
+       "target": "Semantic Error: Invalid Range Source"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <algorithm>\nint main() { int a5,, b2,; std::copy(a, a+5, b); }\nCompiler output:\nwarning: destination range is smaller than source range",
+       "target": "Semantic Error: Buffer Overflow in Algorithm"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <ranges>\nint main() { auto r = std::views::transform(,(int n){ return n; }); }\nCompiler output:\nerror: ‘views::transform’ requires a range as the first argument",
+       "target": "Semantic Error: Incomplete Range Pipeline"
+     }
+   ,
+   
+     {
+       "input": "classify_error: C++ code:\n#include <thread>\nvoid f() {}\nint main() { std::thread t1(f); std::thread t2 = t1; }\nCompiler output:\nerror: use of deleted function ‘std::thread::thread(const std::thread&)’",
+       "target": "Semantic Error: Illegal Thread Copy"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <mutex>\nint main() { std::mutex m; std::mutex m2 = m; }\nCompiler output:\nerror: use of deleted function ‘std::mutex::mutex(const std::mutex&)’",
+       "target": "Semantic Error: Illegal Mutex Copy"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <atomic>\nstruct S { S(int) {} };\nint main() { std::atomic<S> a; }\nCompiler output:\nerror: ‘std::atomic<S>’ requires ‘S’ to be trivially copyable",
+       "target": "Semantic Error: Invalid Atomic Type"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <future>\nint main() { std::promise<int> p; std::future<int> f = p.get_future(); f.get(); f.get(); }\nCompiler output:\nwarning: ‘get’ called on an invalid future (already consumed)",
+       "target": "Semantic Error: Multiple Future Consumption"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <thread>\nvoid f(int& n) { n++; }\nint main() { int x = 0; std::thread t(f, x); t.join(); }\nCompiler output:\nerror: no matching constructor for call to ‘std::thread::thread(void (&)(int&), int&)’\nnote: candidate template ignored: substitution failure : cannot bind rvalue reference to lvalue",
+       "target": "Semantic Error: Thread Argument Reference Mismatch"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <mutex>\nvoid f(std::mutex m) {}\nint main() { std::mutex mtx; f(mtx); }\nCompiler output:\nerror: cannot pass object of type ‘std::mutex’ by value",
+       "target": "Semantic Error: Mutex Passed by Value"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <condition_variable>\nint main() { std::condition_variable cv; cv.wait(); }\nCompiler output:\nerror: no matching member function for call to ‘wait’\nnote: candidate requires a lock of type ‘std::unique_lock<std::mutex>&’",
+       "target": "Semantic Error: Missing Lock for Condition Variable"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <thread>\nint main() { std::thread t(,{}); }\n// Missing t.join() or t.detach()\nCompiler output:\nwarning: ‘std::thread’ object destroyed while still joinable",
+       "target": "Semantic Error: Joinable Thread Destruction"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <atomic>\nint main() { std::atomic<int> a = 10; }\nCompiler output:\nerror: conversion from ‘int’ to non-scalar type ‘std::atomic<int>’ requested",
+       "target": "Semantic Error: Atomic Initialization Mismatch"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <future>\nint main() { std::async(,{ return 5; }).get(); }\n// Missing #include <future>\nCompiler output:\nerror: ‘async’ is not a member of ‘std’",
+       "target": "Semantic Error: Missing Concurrency Header"
+     }
+   ,
+   
+     {
+       "input": "classify_error: C++ code:\nstruct S; \nint main() { int x = sizeof(S); }\nCompiler output:\nerror: invalid application of ‘sizeof’ to an incomplete type ‘S’",
+       "target": "Semantic Error: Sizeof Incomplete Type"
+     },
+     {
+       "input": "classify_error: C++ code:\nstruct alignas(3) S { int x; };\nCompiler output:\nerror: requested alignment ‘3’ is not a positive power of 2",
+       "target": "Semantic Error: Invalid Alignment Power"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <string>\nunion U { int x; std::string s; };\nCompiler output:\nerror: union member ‘U::s’ has a non-trivial copy constructor",
+       "target": "Semantic Error: Non-Trivial Member in Union"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <cstddef>\nstruct Base { virtual void f(); };\nstruct Derived : Base { int x; };\nint main() { size_t offset = offsetof(Derived, x); }\nCompiler output:\nerror: ‘offsetof’ within non-standard-layout type ‘Derived’",
+       "target": "Semantic Error: Offsetof on Non-Standard Layout"
+     },
+     {
+       "input": "classify_error: C++ code:\nstruct S { static int x; };\nint main() { int sz = sizeof(S::x); }\n// Valid in C++11, but testing older standard constraints:\nCompiler output:\nerror: invalid use of non-static data member ‘S::x’",
+       "target": "Semantic Error: Invalid Sizeof Usage"
+     },
+     {
+       "input": "classify_error: C++ code:\nstruct alignas(1) S { double d; };\nCompiler output:\nerror: requested alignment ‘1’ is less than minimum alignment ‘8’ for type ‘double’",
+       "target": "Semantic Error: Alignment Underflow"
+     },
+     {
+       "input": "classify_error: C++ code:\nstruct S { int a; int b; } __attribute__((packed));\nint main() { S s; int* p = &s.b; }\nCompiler output:\nwarning: taking address of packed member ‘b’ of ‘s’ may result in an unaligned pointer value",
+       "target": "Semantic Error: Unaligned Pointer from Packed Member"
+     },
+     {
+       "input": "classify_error: C++ code:\nunion U { int a; float b; };\nint main() { U u = {1, 2.0f}; }\nCompiler output:\nerror: too many initializers for ‘U’",
+       "target": "Semantic Error: Excess Union Initializers"
+     },
+     {
+       "input": "classify_error: C++ code:\nstruct S { int x; void f() { alignas(int) int y; } };\nint main() { S s; }\nCompiler output:\nerror: ‘alignas’ attribute cannot be applied to a local variable",
+       "target": "Semantic Error: Misplaced Alignas Attribute"
+     },
+     {
+       "input": "classify_error: C++ code:\n#include <type_traits>\nstruct S { int x; };\nstatic_assert(std::is_standard_layout_v<int&>);\nCompiler output:\nerror: static assertion failed",
+       "target": "Semantic Error: Type Trait Requirement Failure"
+     }
+   ]
+   
+   
+   
