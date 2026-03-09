@@ -1,0 +1,65 @@
+{
+  "builder_name": "json",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "json",
+  "dataset_size": 144370,
+  "description": "",
+  "download_checksums": {
+    "D:/Documents/Projects/Compiler design/cd-error-explaination/data/processed/train.json": {
+      "num_bytes": 147672,
+      "checksum": null
+    },
+    "D:/Documents/Projects/Compiler design/cd-error-explaination/data/processed/val.json": {
+      "num_bytes": 14630,
+      "checksum": null
+    }
+  },
+  "download_size": 162302,
+  "features": {
+    "input_ids": {
+      "feature": {
+        "dtype": "int32",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "attention_mask": {
+      "feature": {
+        "dtype": "int8",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "labels": {
+      "feature": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "_type": "List"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 306672,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 132405,
+      "num_examples": 326,
+      "dataset_name": "json"
+    },
+    "validation": {
+      "name": "validation",
+      "num_bytes": 11965,
+      "num_examples": 47,
+      "dataset_name": "json"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
