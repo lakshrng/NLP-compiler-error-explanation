@@ -9,3 +9,83 @@ error: 'class' does not name a type
 error: invalid conversion from 'int*' to 'int'
 error: 'vector' in namespace 'std' does not name a type
 
+
+
+# ODR / Redefinition
+error: redefinition of 'class MyClass'
+error: redefinition of 'void foo()'
+
+# Linkage
+error: 'x' has both 'static' and 'extern'
+
+# Preprocessor
+error: #endif without #if
+error: unterminated #if
+
+# Include
+error: missing terminating '>' character in #include
+
+# Undeclared
+error: 'bar' was not declared in this scope
+error: 'MyType' does not name a type
+
+# Missing semicolon
+error: expected ';' before 'return'
+
+# Linker
+error: undefined reference to `main'
+
+# Type conversion
+error: cannot convert 'const char*' to 'int' in return
+error: invalid conversion from 'float*' to 'int*'
+
+# Array / pointer
+error: assigning to an array from an initializer list
+error: 'void*' is not a pointer-to-object type
+
+# Lvalue / assignment
+error: lvalue required as left operand of assignment
+
+# Constexpr
+error: 'n' is not a constant expression
+
+# Access control
+error: 'Base::x' is private within this context
+error: 'Base::y' is protected within this context
+error: 'Base::z' is inaccessible within this context
+
+# Function matching
+error: no matching function for call to 'f(double, int)'
+error: no matching member function for call to 'A::g()'
+
+# Ambiguity
+error: call of overloaded 'abs(double)' is ambiguous
+error: reference to 'foo' is ambiguous
+
+# Operator
+error: no match for 'operator<<' (operand types are 'X' and 'Y')
+error: invalid operands of types 'A' and 'B' to binary 'operator+'
+
+# Templates
+error: wrong number of template arguments (3, should be 2)
+error: deduced conflicting types for parameter 'T'
+error: constraints not satisfied for 'C'
+error: unexpanded parameter pack 'Args'
+
+# Deleted / abstract
+error: use of deleted function 'S::S(const S&)'
+error: cannot declare variable 'b' to be of abstract type 'Base'
+
+# Casts
+error: invalid static_cast from type 'Derived*' to type 'Unrelated*'
+error: reinterpret_cast from 'A*' to 'B*' is not allowed
+error: cannot dynamic_cast 'p' (of type 'X*') to type 'Y*'
+error: cast from 'const int*' to 'int*' casts away qualifiers
+
+# Other
+error: static assertion failed: sizeof(T) > 0
+error: 'std::baz' has not been declared
+error: assignment of read-only variable 'PI'
+error: cannot take address of bit-field 'S::flag'
+error: arithmetic on pointer to an incomplete type 'struct Foo'
+
