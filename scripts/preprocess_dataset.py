@@ -14,22 +14,24 @@ if str(REPO_ROOT) not in sys.path:
 
 from src.utils.logger import setup_logger
 
+import argparse
+
 MODEL_NAME = "t5-small"
-MAX_INPUT_LENGTH = 256
-MAX_TARGET_LENGTH = 128
+MAX_INPUT_LENGTH = 512
+MAX_TARGET_LENGTH = 512
 
 DATA_DIR = REPO_ROOT / "data"
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
-TOKENIZED_OUTPUT_DIR = PROCESSED_DATA_DIR / "tokenized" / "t5_small"
 
 logger = setup_logger()
 
 
-def resolve_split_path(split_name: str) -> Path | None:
+def resolve_split_path(split_name: str, task: str = None) -> Path | None:
     """Return the first existing path for a dataset split."""
+    suffix = f"_{task}" if task else ""
     candidate_paths = [
-        DATA_DIR / f"{split_name}.json",
-        PROCESSED_DATA_DIR / f"{split_name}.json",
+        PROCESSED_DATA_DIR / f"{split_name}{suffix}.json",
+        DATA_DIR / f"{split_name}{suffix}.json",
     ]
 
     for candidate_path in candidate_paths:
@@ -39,7 +41,7 @@ def resolve_split_path(split_name: str) -> Path | None:
     return None
 
 
-def collect_data_files() -> dict[str, str]:
+def collect_data_files(task: str = None) -> dict[str, str]:
     """Collect available train/validation/test files without recreating data."""
     split_aliases = {
         "train": "train",
@@ -49,12 +51,13 @@ def collect_data_files() -> dict[str, str]:
 
     data_files: dict[str, str] = {}
     for split_name, file_stem in split_aliases.items():
-        split_path = resolve_split_path(file_stem)
+        split_path = resolve_split_path(file_stem, task)
         if split_path is None:
             if split_name == "train":
+                task_msg = f" for task '{task}'" if task else ""
                 raise FileNotFoundError(
-                    "Could not find training data at 'data/train.json' "
-                    "or 'data/processed/train.json'."
+                    f"Could not find training data{task_msg} at "
+                    f"'data/processed/{file_stem}{'_'+task if task else ''}.json'."
                 )
             continue
 
@@ -63,9 +66,9 @@ def collect_data_files() -> dict[str, str]:
     return data_files
 
 
-def load_raw_datasets() -> DatasetDict:
+def load_raw_datasets(task: str = None) -> DatasetDict:
     """Load JSON datasets using the HuggingFace datasets library."""
-    data_files = collect_data_files()
+    data_files = collect_data_files(task)
     logger.info("Loading dataset files: %s", data_files)
 
     raw_datasets = load_dataset("json", data_files=data_files)
@@ -142,20 +145,27 @@ def print_dataset_summary(tokenized_datasets: DatasetDict) -> None:
             print(f"Label length: {len(first_row['labels'])}")
 
 
-def save_tokenized_datasets(tokenized_datasets: DatasetDict) -> Path:
+def save_tokenized_datasets(tokenized_datasets: DatasetDict, task: str = None) -> Path:
     """Persist the tokenized dataset for the upcoming training step."""
-    TOKENIZED_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    tokenized_datasets.save_to_disk(str(TOKENIZED_OUTPUT_DIR))
-    logger.info("Saved tokenized dataset to %s", TOKENIZED_OUTPUT_DIR)
-    return TOKENIZED_OUTPUT_DIR
+    suffix = f"_{task}" if task else ""
+    tokenized_output_dir = PROCESSED_DATA_DIR / "tokenized" / f"t5_small{suffix}"
+    tokenized_output_dir.mkdir(parents=True, exist_ok=True)
+    tokenized_datasets.save_to_disk(str(tokenized_output_dir))
+    logger.info("Saved tokenized dataset to %s", tokenized_output_dir)
+    return tokenized_output_dir
 
 
 def main() -> None:
     """Run the full dataset loading and tokenization pipeline."""
-    raw_datasets = load_raw_datasets()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--task", type=str, choices=["classify", "explain"], default=None, 
+                        help="Task to preprocess (classify or explain). Default is multitask.")
+    args = parser.parse_args()
+
+    raw_datasets = load_raw_datasets(args.task)
     tokenizer = build_tokenizer()
     tokenized_datasets = tokenize_datasets(raw_datasets, tokenizer)
-    output_dir = save_tokenized_datasets(tokenized_datasets)
+    output_dir = save_tokenized_datasets(tokenized_datasets, args.task)
     print_dataset_summary(tokenized_datasets)
     print(f"\nSaved tokenized dataset to: {output_dir}")
 

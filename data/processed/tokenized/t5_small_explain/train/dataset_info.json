@@ -1,0 +1,65 @@
+{
+  "builder_name": "json",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "json",
+  "dataset_size": 187205,
+  "description": "",
+  "download_checksums": {
+    "D:/NITW/Sem 4/CD/NLP-compiler-error-explanation/data/processed/train_explain.json": {
+      "num_bytes": 180983,
+      "checksum": null
+    },
+    "D:/NITW/Sem 4/CD/NLP-compiler-error-explanation/data/processed/val_explain.json": {
+      "num_bytes": 23528,
+      "checksum": null
+    }
+  },
+  "download_size": 204511,
+  "features": {
+    "input_ids": {
+      "feature": {
+        "dtype": "int32",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "attention_mask": {
+      "feature": {
+        "dtype": "int8",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "labels": {
+      "feature": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "_type": "List"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 391716,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 165716,
+      "num_examples": 326,
+      "dataset_name": "json"
+    },
+    "validation": {
+      "name": "validation",
+      "num_bytes": 21489,
+      "num_examples": 47,
+      "dataset_name": "json"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}

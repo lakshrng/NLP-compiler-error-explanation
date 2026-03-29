@@ -4,7 +4,7 @@ from transformers import TrainingArguments, Trainer
 import os
 
 # Paths
-DATA_PATH = "data/processed/tokenized/t5_small"
+DATA_PATH = "data/processed/tokenized/t5_small_explain"
 MODEL_NAME = "t5-small"
 OUTPUT_DIR = "models/checkpoints/t5_small"
 
@@ -21,16 +21,16 @@ training_args = TrainingArguments(
     output_dir=OUTPUT_DIR,
     eval_strategy="epoch",
     learning_rate=3e-4,
-    per_device_train_batch_size=8,
-    per_device_eval_batch_size=8,
-    num_train_epochs=20,  # Increased from 3
+    per_device_train_batch_size=4,  # Reduced from 8
+    per_device_eval_batch_size=4,   # Reduced from 8
+    num_train_epochs=20,
     weight_decay=0.01,
-    logging_dir="logs",
-    logging_steps=10,
+    logging_steps=1,                # More frequent logging
     save_total_limit=2,
     save_strategy="epoch",
     load_best_model_at_end=True,
-    report_to="none", 
+    report_to="none",
+    dataloader_pin_memory=False,    # Explicitly disable to avoid warning/overhead
 )
 
 # Trainer
@@ -39,7 +39,6 @@ trainer = Trainer(
     args=training_args,
     train_dataset=train_dataset,
     eval_dataset=val_dataset,
-    tokenizer=tokenizer,
 )
 
 # Train
