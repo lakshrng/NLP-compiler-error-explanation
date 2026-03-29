@@ -23,15 +23,14 @@ training_args = TrainingArguments(
     learning_rate=3e-4,
     per_device_train_batch_size=8,
     per_device_eval_batch_size=8,
-    num_train_epochs=3,
+    num_train_epochs=20,  # Increased from 3
     weight_decay=0.01,
     logging_dir="logs",
-    logging_steps=50,
+    logging_steps=10,
     save_total_limit=2,
     save_strategy="epoch",
     load_best_model_at_end=True,
-
-     report_to="tensorboard", 
+    report_to="none", 
 )
 
 # Trainer
