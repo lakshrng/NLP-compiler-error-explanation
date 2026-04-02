@@ -25,7 +25,7 @@ class RuleBasedExplainer:
     (r"missing terminating >", "Syntax Error: Incomplete Include Directive"),
 
     # Undeclared identifiers
-    (r"was not declared in this scope", "Semantic Error: Undeclared Identifier"),
+    # (r"was not declared in this scope", "Semantic Error: Undeclared Identifier"),
     (r"does not name a type", "Semantic Error: Undeclared Type"),
 
     # Missing semicolon
@@ -244,6 +244,10 @@ class RuleBasedExplainer:
     # Extract compiler message
     # -------------------------
     def extract_error_message(self, full_input):
+        match = re.search(r"Compiler output:\n(error:.*|warning:.*)", full_input, re.IGNORECASE)
+        if match:
+            return match.group(1).strip()
+        # Fallback to general search if "Compiler output:" prefix is missing
         match = re.search(r"(error:.*|warning:.*)", full_input, re.IGNORECASE)
         if match:
             return match.group(1).strip()
@@ -252,30 +256,24 @@ class RuleBasedExplainer:
     # -------------------------
     # Classification
     # -------------------------
-    # def classify(self, full_input):
-    #     self.total_predictions += 1
-
-    #     error_msg = self.extract_error_message(full_input)
-
-    #     for pattern, label in self.rules:
-    #         if re.search(pattern, error_msg, re.IGNORECASE):
-    #             self.matched_predictions += 1
-    #             return label
-
-    #     return "Unknown Error"
     def classify(self, full_input):
         self.total_predictions += 1
 
-        print("\nFULL INPUT:\n", full_input)
+        # Only look for rules within the "Compiler output:" section
+        error_msg = self.extract_error_message(full_input)
+        
+        # print("\nFULL INPUT:\n", full_input)
+        print("EXTRACTED ERROR MSG:", error_msg)
 
         for pattern, label in self.rules:
-            if re.search(pattern, full_input, re.IGNORECASE):
+            if re.search(pattern, error_msg, re.IGNORECASE):
                 print("MATCHED PATTERN:", pattern)
                 self.matched_predictions += 1
                 return label
 
         print("NO MATCH FOUND")
         return "Unknown Error"
+        
     # -------------------------
     # Explanation
     # -------------------------

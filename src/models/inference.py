@@ -42,14 +42,18 @@ class CompilerErrorExplainer:
         Explain a compiler error.
         
         Args:
-            error_message: The compiler error message
+            error_message: The compiler error message (full prompt)
             num_beams: Number of beams for beam search
             
         Returns:
             Explanation of the error
         """
-        # Format input
-        input_text = f"explain compiler error: {error_message}"
+        # Format input - Use the message as is if it already has a prefix,
+        # otherwise use a default prefix.
+        if ":" in error_message[:20]:
+            input_text = error_message
+        else:
+            input_text = f"explain_error: Compiler output:\n{error_message}"
         
         # Tokenize
         input_encoding = self.tokenizer(

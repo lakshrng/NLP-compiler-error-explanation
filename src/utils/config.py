@@ -1,5 +1,5 @@
 """Configuration management for the compiler error explanation system."""
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
@@ -50,9 +50,9 @@ class TrainingConfig:
 @dataclass
 class Config:
     """Main configuration class."""
-    model: ModelConfig = ModelConfig()
-    data: DataConfig = DataConfig()
-    training: TrainingConfig = TrainingConfig()
+    model: ModelConfig = field(default_factory=ModelConfig)
+    data: DataConfig = field(default_factory=DataConfig)
+    training: TrainingConfig = field(default_factory=TrainingConfig)
     
     def __post_init__(self):
         """Ensure directories exist."""
